@@ -5,7 +5,7 @@
 <h1 align="center">Everyone Is a Skill</h1>
 
 <p align="center">
-  <img alt="可见性：私有" src="https://img.shields.io/badge/visibility-private-6f42c1">
+  <img alt="可见性：公开" src="https://img.shields.io/badge/visibility-public-2ea44f">
   <img alt="许可证：Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue">
   <img alt="版本：1.0.0" src="https://img.shields.io/badge/version-1.0.0-2ea44f">
   <img alt="Python：3.11+" src="https://img.shields.io/badge/python-3.11%2B-3776ab">
