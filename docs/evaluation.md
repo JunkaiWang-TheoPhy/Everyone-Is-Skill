@@ -68,9 +68,10 @@ Templates start every evaluation file with:
 }
 ```
 
-Recommended later values are advisory only, for example `specified`,
-`in-progress`, `passed`, `failed`, or `mixed`. They stay advisory because the
-current Python runtime does not validate them.
+During drafting, values such as `specified`, `in-progress`, `passed`, `failed`,
+or `mixed` remain useful. Structural validation only checks their shape.
+`release-check` is stricter: every required file must use `status: "passed"`
+and contain at least one case.
 
 ## Minimal scoring guidance
 
@@ -89,3 +90,8 @@ A profile should not be treated as release-ready when:
 - matched peers are not distinguishable,
 - transfer works only by style imitation,
 - or boundary tests show identity overclaiming.
+
+The executable gate is `everyone-skill release-check PROFILE`. Its current
+minimum is intentionally mechanical; a `passed` value must describe an
+actually executed case and is still subject to review. The evaluation runner
+records the execution evidence used to justify that value.

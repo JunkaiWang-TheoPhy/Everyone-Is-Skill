@@ -93,3 +93,8 @@ and all additions beyond basic JSON validity must stay optional.
 A draft profile may contain empty evidence files. A release-ready profile may
 not rely on empty evidence, placeholder anchors, or unreviewed
 `person-specific-candidate` claims.
+
+The executable release gate also requires every supported method to cite two
+distinct corpus entries. Strong attribution cannot retain `unknown` or `high`
+coauthor risk and cannot ship with the scaffold counterevidence text. These are
+minimum safeguards, not proof that an attribution is correct.

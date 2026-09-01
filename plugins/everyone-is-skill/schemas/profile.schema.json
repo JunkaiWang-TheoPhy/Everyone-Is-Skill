@@ -18,6 +18,10 @@
       "type": "string",
       "minLength": 1
     },
+    "profile_version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
     "slug": {
       "type": "string",
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
@@ -100,6 +104,30 @@
     },
     "coauthor_policy": {
       "type": "string"
+    },
+    "imported_from": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_bundled": {
+          "type": "boolean"
+        },
+        "trust": {
+          "type": "string",
+          "enum": [
+            "unreviewed",
+            "reviewed"
+          ]
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

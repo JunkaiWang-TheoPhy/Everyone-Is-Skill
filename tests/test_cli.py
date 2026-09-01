@@ -112,6 +112,50 @@ class CliTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("repository is valid", result.stdout.lower())
 
+    def test_release_check_fails_closed_for_a_draft(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created = self.run_cli(
+                "new-profile",
+                "--output",
+                tmp,
+                "--slug",
+                "example-scientist",
+                "--name",
+                "Example Scientist",
+                "--kind",
+                "scientist",
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            checked = self.run_cli("release-check", str(Path(tmp) / "example-scientist"))
+            self.assertEqual(checked.returncode, 1)
+            self.assertIn("manifest.status must be release-ready", checked.stderr)
+
+    def test_release_check_command_reports_release_blockers(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created = self.run_cli(
+                "new-profile",
+                "--output",
+                tmp,
+                "--slug",
+                "alexei-kitaev",
+                "--name",
+                "Alexei Kitaev",
+                "--kind",
+                "scientist",
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            profile = Path(tmp) / "alexei-kitaev"
+
+            manifest_path = profile / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["identity_anchors"] = [{"type": "orcid", "value": "0000-0000-0000-0000"}]
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+            checked = self.run_cli("release-check", str(profile))
+            self.assertEqual(checked.returncode, 1)
+            self.assertIn("status must be release-ready", checked.stderr)
+            self.assertIn("evidence/claims.jsonl must contain at least one claim", checked.stderr)
+
     def test_import_reference_records_upstream_without_copying_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli(
