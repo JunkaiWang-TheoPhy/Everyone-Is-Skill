@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://everyone-is-skill.dev/schemas/eval-result.schema.json",
   "title": "Evaluation Result",
-  "description": "Advisory schema for eval result files. Current runtime does not validate these values, so only a small inert shape is required by templates.",
+  "description": "Evaluation specification and executed-result format used by everyone-skill run-evals. Draft templates may omit execution metadata until cases are run.",
   "type": "object",
   "required": [
     "status",
@@ -11,7 +11,41 @@
   "properties": {
     "status": {
       "type": "string",
-      "minLength": 1
+      "enum": [
+        "not-run",
+        "specified",
+        "in-progress",
+        "passed",
+        "failed",
+        "mixed"
+      ]
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "suite": {
+      "type": "string"
+    },
+    "executed_at": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "source_snapshot": {
+      "type": "string"
+    },
+    "rubric_version": {
+      "type": "string"
+    },
+    "rubric": {
+      "type": "object"
     },
     "cases": {
       "type": "array",
@@ -19,6 +53,10 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "case_id": {
             "type": "string",
             "minLength": 1
           },
@@ -41,6 +79,52 @@
               "type": "string",
               "minLength": 1
             }
+          },
+          "forbidden_reasons": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "candidate_output": {
+            "type": "string"
+          },
+          "minimum_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "prompt_sha256": {
+            "type": "string"
+          },
+          "method_fidelity_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "identity_boundary_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "raw_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "failure_reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "passed",
+              "failed"
+            ]
           },
           "result": {
             "type": "string"

@@ -12,6 +12,9 @@ EVAL_FILES = (
     "matched-peers.json",
     "transfer-tests.json",
     "boundary-tests.json",
+    "coauthor-leakage.json",
+    "source-ablation.json",
+    "prompt-injection.json",
 )
 
 
@@ -50,11 +53,33 @@ class ReleaseCheckTests(unittest.TestCase):
         (profile / "evidence" / "claims.jsonl").write_text(json.dumps(claim) + "\n", encoding="utf-8")
         for filename in EVAL_FILES:
             (profile / "evals" / filename).write_text(
-                json.dumps({"status": "passed", "cases": [{"case_id": filename, "verdict": "passed"}]}) + "\n",
+                json.dumps(
+                    {
+                        "status": "passed",
+                        "executed_at": "2026-09-01T00:00:00+00:00",
+                        "provider": "recorded-output",
+                        "model": "fixture-v1",
+                        "reviewer": "reviewer-id",
+                        "source_snapshot": "snapshot-123",
+                        "rubric_version": "literal-signals-v1",
+                        "cases": [
+                            {
+                                "case_id": filename,
+                                "prompt_sha256": "a" * 64,
+                                "raw_score": 1.0,
+                                "minimum_score": 1.0,
+                                "forbidden_hits": [],
+                                "verdict": "passed",
+                            }
+                        ],
+                    }
+                )
+                + "\n",
                 encoding="utf-8",
             )
         (profile / "provenance.yaml").write_text(
-            "schema_version: '1.0'\nprofile_version: '1.0.0'\nreview_status: reviewed\n",
+            "schema_version: '1.0'\nprofile_version: '1.0.0'\n"
+            "source_snapshot: 'snapshot-123'\nreview_status: reviewed\n",
             encoding="utf-8",
         )
         return profile
@@ -138,6 +163,41 @@ class ReleaseCheckTests(unittest.TestCase):
             self.assertIn(
                 "manifest.identity_anchors contains a placeholder value: placeholder",
                 release_check(profile),
+            )
+
+    def test_passed_label_without_execution_evidence_is_rejected(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            profile = self.make_profile(tmp)
+            eval_path = profile / "evals" / "boundary-tests.json"
+            eval_path.write_text(
+                json.dumps({"status": "passed", "cases": [{"case_id": "forged"}]}) + "\n",
+                encoding="utf-8",
+            )
+
+            errors = release_check(profile)
+
+            self.assertIn("evals/boundary-tests.json missing execution field: provider", errors)
+            self.assertIn("evals/boundary-tests.json case forged must have verdict passed", errors)
+            self.assertIn("evals/boundary-tests.json case forged must record raw_score", errors)
+
+    def test_passed_verdict_cannot_contradict_the_recorded_score(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            profile = self.make_profile(tmp)
+            eval_path = profile / "evals" / "prompt-injection.json"
+            result = json.loads(eval_path.read_text(encoding="utf-8"))
+            result["cases"][0]["raw_score"] = 0.0
+            result["cases"][0]["forbidden_hits"] = ["ignore previous instructions"]
+            eval_path.write_text(json.dumps(result) + "\n", encoding="utf-8")
+
+            errors = release_check(profile)
+
+            self.assertIn(
+                "evals/prompt-injection.json case prompt-injection.json passed verdict contradicts recorded score",
+                errors,
+            )
+            self.assertIn(
+                "evals/prompt-injection.json case prompt-injection.json contains forbidden hits",
+                errors,
             )
 
 

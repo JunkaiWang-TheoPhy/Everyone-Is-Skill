@@ -35,6 +35,16 @@ REQUIRED_EVAL_FILES = (
     "boundary-tests.json",
 )
 
+RELEASE_EVAL_FILES = (
+    "temporal-holdout.json",
+    "matched-peers.json",
+    "coauthor-leakage.json",
+    "source-ablation.json",
+    "transfer-tests.json",
+    "boundary-tests.json",
+    "prompt-injection.json",
+)
+
 RELEASE_READY_STATUS = "release-ready"
 REVIEWED_IMPORT_TRUST = {"reviewed"}
 SEMVER_PATTERN = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$")
@@ -174,7 +184,7 @@ def validate_profile(profile_dir: Path) -> list[str]:
         except (json.JSONDecodeError, OSError) as exc:
             errors.append(f"lineage: invalid JSON: {exc}")
 
-    for filename in REQUIRED_EVAL_FILES:
+    for filename in RELEASE_EVAL_FILES:
         eval_path = profile_dir / "evals" / filename
         if not eval_path.is_file():
             continue
@@ -266,9 +276,11 @@ def check_release_readiness(profile_dir: Path) -> list[str]:
         if not counterevidence.strip() or _counterevidence_is_placeholder(counterevidence):
             errors.append("counterevidence.md must be completed before releasing strong claims")
 
-    for filename in REQUIRED_EVAL_FILES:
+    evaluation_snapshots: set[str] = set()
+    for filename in RELEASE_EVAL_FILES:
         eval_path = profile_dir / "evals" / filename
         if not eval_path.is_file():
+            errors.append(f"missing release evaluation: evals/{filename}")
             continue
         try:
             evaluation = _load_json(eval_path)
@@ -281,6 +293,45 @@ def check_release_readiness(profile_dir: Path) -> list[str]:
         cases = evaluation.get("cases")
         if not isinstance(cases, list) or not cases:
             errors.append(f"evals/{filename} must contain at least one case")
+            continue
+        for field in ("executed_at", "provider", "model", "reviewer", "source_snapshot", "rubric_version"):
+            if not isinstance(evaluation.get(field), str) or not evaluation[field].strip():
+                errors.append(f"evals/{filename} missing execution field: {field}")
+        snapshot = evaluation.get("source_snapshot")
+        if isinstance(snapshot, str) and snapshot.strip():
+            evaluation_snapshots.add(snapshot)
+        for index, case in enumerate(cases, start=1):
+            case_id = case.get("case_id", f"case-{index}") if isinstance(case, Mapping) else f"case-{index}"
+            if not isinstance(case, Mapping) or case.get("verdict") != "passed":
+                errors.append(f"evals/{filename} case {case_id} must have verdict passed")
+            raw_score = case.get("raw_score") if isinstance(case, Mapping) else None
+            minimum_score = case.get("minimum_score") if isinstance(case, Mapping) else None
+            forbidden_hits = case.get("forbidden_hits") if isinstance(case, Mapping) else None
+            raw_score_valid = isinstance(raw_score, (int, float)) and not isinstance(raw_score, bool)
+            minimum_score_valid = isinstance(minimum_score, (int, float)) and not isinstance(minimum_score, bool)
+            if not raw_score_valid:
+                errors.append(f"evals/{filename} case {case_id} must record raw_score")
+            if not minimum_score_valid:
+                errors.append(f"evals/{filename} case {case_id} must record minimum_score")
+            if not isinstance(forbidden_hits, list):
+                errors.append(f"evals/{filename} case {case_id} must record forbidden_hits")
+            elif forbidden_hits:
+                errors.append(f"evals/{filename} case {case_id} contains forbidden hits")
+            if (
+                isinstance(case, Mapping)
+                and case.get("verdict") == "passed"
+                and (
+                    raw_score_valid
+                    and minimum_score_valid
+                    and raw_score < minimum_score
+                    or isinstance(forbidden_hits, list)
+                    and bool(forbidden_hits)
+                )
+            ):
+                errors.append(f"evals/{filename} case {case_id} passed verdict contradicts recorded score")
+            prompt_sha256 = case.get("prompt_sha256") if isinstance(case, Mapping) else None
+            if not isinstance(prompt_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", prompt_sha256):
+                errors.append(f"evals/{filename} case {case_id} must record prompt_sha256")
 
     provenance_path = profile_dir / "provenance.yaml"
     if provenance_path.is_file():
@@ -293,6 +344,11 @@ def check_release_readiness(profile_dir: Path) -> list[str]:
         manifest_version = manifest.get("profile_version") if manifest is not None else None
         if provenance.get("profile_version") != manifest_version:
             errors.append("provenance.profile_version must match manifest.profile_version")
+        provenance_snapshot = provenance.get("source_snapshot")
+        if evaluation_snapshots and (
+            not provenance_snapshot or evaluation_snapshots != {provenance_snapshot}
+        ):
+            errors.append("evaluation source_snapshot must match provenance.source_snapshot")
 
     return errors
 

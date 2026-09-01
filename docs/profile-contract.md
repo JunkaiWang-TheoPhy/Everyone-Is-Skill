@@ -80,6 +80,12 @@ The CLI currently checks for:
 - `evals/transfer-tests.json`
 - `evals/boundary-tests.json`
 
+Release-ready profiles additionally require:
+
+- `evals/coauthor-leakage.json`
+- `evals/source-ablation.json`
+- `evals/prompt-injection.json`
+
 ## Template rules
 
 Templates in `templates/scientist/` and `templates/team/` must:
@@ -103,7 +109,8 @@ are true:
   resolves in `evidence/corpus-index.jsonl`;
 - every `supported-method` claim uses at least two distinct sources;
 - strong attribution has resolved coauthor risk and completed counterevidence;
-- all four required evaluation files have `status: "passed"` and contain cases;
+- all seven release evaluation files have executed cases, reproducibility
+  metadata, and `status: "passed"`;
 - provenance is reviewed and its version matches the manifest; and
 - any imported profile has passed an explicit trust review.
 

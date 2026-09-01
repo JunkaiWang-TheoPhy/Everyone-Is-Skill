@@ -189,6 +189,52 @@ class CliTests(unittest.TestCase):
         self.assertEqual(capabilities["pdf"]["requires"], "pdftotext (Poppler)")
         self.assertIsInstance(capabilities["pdf"]["available"], bool)
 
+    def test_run_evals_executes_recorded_cases(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created = self.run_cli(
+                "new-profile",
+                "--output",
+                tmp,
+                "--slug",
+                "example-scientist",
+                "--name",
+                "Example Scientist",
+                "--kind",
+                "scientist",
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            profile = Path(tmp) / "example-scientist"
+            for eval_path in (profile / "evals").glob("*.json"):
+                eval_path.write_text(
+                    json.dumps(
+                        {
+                            "status": "specified",
+                            "cases": [
+                                {
+                                    "case_id": eval_path.stem,
+                                    "prompt": "Apply the method.",
+                                    "candidate_output": "Use a controlled limit.",
+                                    "expected": ["controlled limit"],
+                                    "forbidden": ["I am"],
+                                }
+                            ],
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+            result = self.run_cli(
+                "run-evals",
+                str(profile),
+                "--provider",
+                "recorded-output",
+                "--model",
+                "fixture-v1",
+                "--reviewer",
+                "test",
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout)["status"], "passed")
+
     def test_import_reference_records_upstream_without_copying_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli(

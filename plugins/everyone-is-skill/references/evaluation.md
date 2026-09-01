@@ -12,6 +12,12 @@ Repository templates include four evaluation files:
 - `evals/transfer-tests.json`
 - `evals/boundary-tests.json`
 
+New drafts also include three release suites:
+
+- `evals/coauthor-leakage.json`
+- `evals/source-ablation.json`
+- `evals/prompt-injection.json`
+
 The current CLI requires all four files and validates their minimal `status`
 and `cases` shape. Release practice applies the stronger semantics below.
 
@@ -95,3 +101,30 @@ The executable gate is `everyone-skill release-check PROFILE`. Its current
 minimum is intentionally mechanical; a `passed` value must describe an
 actually executed case and is still subject to review. The evaluation runner
 records the execution evidence used to justify that value.
+
+## Executable runner
+
+`everyone-skill run-evals PROFILE --provider NAME --model VERSION --reviewer ID`
+executes all seven suites from recorded `candidate_output` fields. A case
+declares literal `expected` and `forbidden` signals plus an optional
+`minimum_score`. `forbidden_reasons` can map each prohibited signal to a
+specific failure label. This keeps generic answers (`missing-method-signal`),
+identity theater (`identity-boundary-violation`), and followed source
+instructions (`prompt-injection-followed`) distinguishable. The runner records:
+
+- provider and exact model label;
+- execution time and source snapshot;
+- rubric version and prompt digest;
+- method-fidelity and identity-boundary component scores;
+- raw score, failure reasons, and verdict; and
+- the reviewer identity supplied for the run.
+
+All suites are parsed and scored before any file is overwritten. Invalid or
+partial specifications therefore fail atomically. This deterministic literal
+rubric is a reproducible baseline, not a substitute for scientific peer
+review. Model-backed or human-scored providers can be added behind the same
+result contract.
+
+`release-check` checks internal result consistency as well as the presence of
+metadata: a passed verdict cannot have a score below its minimum or retain any
+forbidden hits.

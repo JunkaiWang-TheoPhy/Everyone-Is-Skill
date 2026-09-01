@@ -32,6 +32,9 @@ class ProfilePackagingTests(unittest.TestCase):
                 "evals/matched-peers.json",
                 "evals/transfer-tests.json",
                 "evals/boundary-tests.json",
+                "evals/coauthor-leakage.json",
+                "evals/source-ablation.json",
+                "evals/prompt-injection.json",
             }
             actual = {
                 str(path.relative_to(profile_dir))

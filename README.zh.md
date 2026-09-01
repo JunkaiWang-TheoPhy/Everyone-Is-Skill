@@ -61,8 +61,11 @@ profiles/<slug>/
 └── evals/
     ├── temporal-holdout.json
     ├── matched-peers.json
+    ├── coauthor-leakage.json
+    ├── source-ablation.json
     ├── transfer-tests.json
-    └── boundary-tests.json
+    ├── boundary-tests.json
+    └── prompt-injection.json
 ```
 
 合同定义位于 [`schemas/`](schemas/)，相关解释见[人物包合同](docs/profile-contract.md)、[证据政策](docs/evidence-policy.md)和[评测协议](docs/evaluation.md)。
@@ -123,6 +126,15 @@ everyone-skill release-check profiles/local/alexei-kitaev
 ```
 
 `validate` 只判断人物包是否具备可检查的合法结构。`release-check` 则单独对证据、归因、来源、审查状态和已执行评测实行失败关闭。
+
+为每个评测案例加入已记录的候选输出，以及字面匹配的预期信号和禁止信号后，可以原子执行全部七类评测：
+
+```bash
+everyone-skill run-evals profiles/local/alexei-kitaev \
+  --provider recorded-output \
+  --model model-version \
+  --reviewer reviewer-id
+```
 
 在不复制或重新授权上游内容的情况下记录一个外部画像：
 

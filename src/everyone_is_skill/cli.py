@@ -49,6 +49,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--access", choices=("public", "authorized", "private-reference"), default="authorized"
     )
 
+    run_evals = subparsers.add_parser("run-evals", help="execute all recorded-output profile evaluation suites")
+    run_evals.add_argument("profile", type=Path)
+    run_evals.add_argument("--provider", required=True)
+    run_evals.add_argument("--model", required=True)
+    run_evals.add_argument("--reviewer", required=True)
+
     validate_repo = subparsers.add_parser("validate-repo", help="validate a source repository checkout")
     validate_repo.add_argument("root", type=Path, nargs="?", default=Path("."))
 
@@ -113,6 +119,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(profile)
         return 0
+    if args.command == "run-evals":
+        from .evaluation import run_evaluations
+
+        summary = run_evaluations(
+            args.profile,
+            provider=args.provider,
+            model=args.model,
+            reviewer=args.reviewer,
+        )
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary["status"] == "passed" else 1
     if args.command == "validate-repo":
         from .repository import validate_repository
 

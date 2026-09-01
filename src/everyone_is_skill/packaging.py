@@ -87,8 +87,11 @@ def scaffold_profile(output_dir: Path, slug: str, display_name: str, target_type
     for filename in (
         "temporal-holdout.json",
         "matched-peers.json",
+        "coauthor-leakage.json",
+        "source-ablation.json",
         "transfer-tests.json",
         "boundary-tests.json",
+        "prompt-injection.json",
     ):
         _write(profile_dir / "evals" / filename, "{\n  \"status\": \"not-run\",\n  \"cases\": []\n}\n")
     return profile_dir

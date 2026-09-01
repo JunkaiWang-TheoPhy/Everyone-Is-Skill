@@ -61,8 +61,11 @@ profiles/<slug>/
 └── evals/
     ├── temporal-holdout.json
     ├── matched-peers.json
+    ├── coauthor-leakage.json
+    ├── source-ablation.json
     ├── transfer-tests.json
-    └── boundary-tests.json
+    ├── boundary-tests.json
+    └── prompt-injection.json
 ```
 
 The contracts are defined in [`schemas/`](schemas/) and explained in the [profile contract](docs/profile-contract.md), [evidence policy](docs/evidence-policy.md), and [evaluation protocol](docs/evaluation.md).
@@ -131,6 +134,16 @@ everyone-skill release-check profiles/local/alexei-kitaev
 `validate` checks whether a package is structurally inspectable.
 `release-check` separately fails closed on evidence, attribution, provenance,
 review, and executed-evaluation gaps.
+
+After adding recorded candidate outputs and literal expected/forbidden signals
+to every evaluation case, execute all seven suites atomically:
+
+```bash
+everyone-skill run-evals profiles/local/alexei-kitaev \
+  --provider recorded-output \
+  --model model-version \
+  --reviewer reviewer-id
+```
 
 Reference an upstream profile without copying or relicensing its content:
 
