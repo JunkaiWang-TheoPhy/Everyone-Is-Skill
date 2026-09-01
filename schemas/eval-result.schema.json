@@ -98,6 +98,22 @@
           "prompt_sha256": {
             "type": "string"
           },
+          "raw_output_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "run_id": {
+            "type": "string"
+          },
+          "case_kind": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "method_fidelity_score": {
             "type": "number",
             "minimum": 0,

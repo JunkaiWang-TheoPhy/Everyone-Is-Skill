@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": "nikita-nekrasov",
+      "label": "Nikita Nekrasov",
+      "kind": "person"
+    },
+    {
+      "id": "nekrasov-stony-profile",
+      "label": "Nikita Nekrasov faculty profile",
+      "kind": "source"
+    },
+    {
+      "id": "nekrasov-instanton-2002",
+      "label": "Seiberg-Witten Prepotential From Instanton Counting",
+      "kind": "source"
+    },
+    {
+      "id": "nekrasov-okounkov-2003",
+      "label": "Seiberg-Witten Theory and Random Partitions",
+      "kind": "source"
+    },
+    {
+      "id": "nekrasov-shatashvili-2009",
+      "label": "Quantization of Integrable Systems and Four Dimensional Gauge Theories",
+      "kind": "source"
+    },
+    {
+      "id": "nekrasov-bpscft-2015",
+      "label": "BPS/CFT correspondence: non-perturbative Dyson-Schwinger equations and qq-characters",
+      "kind": "source"
+    },
+    {
+      "id": "nekrasov-crossroads-2016",
+      "label": "BPS/CFT correspondence II: Instantons at crossroads, moduli and compactness theorem",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "nekrasov-stony-profile",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nekrasov-instanton-2002",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nekrasov-okounkov-2003",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nekrasov-shatashvili-2009",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nekrasov-bpscft-2015",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nekrasov-crossroads-2016",
+      "target": "nikita-nekrasov",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

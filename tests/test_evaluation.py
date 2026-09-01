@@ -63,6 +63,12 @@ class EvaluationRunnerTests(unittest.TestCase):
                 self.assertEqual(result["rubric_version"], "literal-signals-v1")
                 self.assertEqual(result["cases"][0]["raw_score"], 1.0)
                 self.assertEqual(result["cases"][0]["verdict"], "passed")
+                self.assertEqual(
+                    result["cases"][0]["raw_output_sha256"],
+                    __import__("hashlib").sha256(
+                        b"Begin from a controlled limit and then generalize."
+                    ).hexdigest(),
+                )
 
     def test_generic_persona_and_injected_outputs_fail_for_distinct_reasons(self):
         cases = {

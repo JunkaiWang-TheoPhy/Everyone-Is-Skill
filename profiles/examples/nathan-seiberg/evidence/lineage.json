@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "id": "nathan-seiberg",
+      "label": "Nathan Seiberg",
+      "kind": "person"
+    },
+    {
+      "id": "seiberg-ias-home",
+      "label": "Nathan Seiberg home page and bibliography",
+      "kind": "source"
+    },
+    {
+      "id": "seiberg-vacua-1994",
+      "label": "Exact Results on the Space of Vacua of Four-Dimensional SUSY Gauge Theories",
+      "kind": "source"
+    },
+    {
+      "id": "seiberg-holomorphy-1994",
+      "label": "The Power of Holomorphy: Exact Results in 4D SUSY Field Theories",
+      "kind": "source"
+    },
+    {
+      "id": "seiberg-duality-1994",
+      "label": "Electric-Magnetic Duality in Supersymmetric Non-Abelian Gauge Theories",
+      "kind": "source"
+    },
+    {
+      "id": "intriligator-seiberg-lectures-1995",
+      "label": "Lectures on Supersymmetric Gauge Theories and Electric-Magnetic Duality",
+      "kind": "source"
+    },
+    {
+      "id": "seiberg-generalized-symmetry-2014",
+      "label": "Generalized Global Symmetries",
+      "kind": "source"
+    },
+    {
+      "id": "seiberg-theta-2017",
+      "label": "Theta, Time Reversal, and Temperature",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "seiberg-ias-home",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "seiberg-vacua-1994",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "seiberg-holomorphy-1994",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "seiberg-duality-1994",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "intriligator-seiberg-lectures-1995",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "seiberg-generalized-symmetry-2014",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "seiberg-theta-2017",
+      "target": "nathan-seiberg",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

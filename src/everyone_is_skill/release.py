@@ -181,6 +181,34 @@ def validate_profile(profile_dir: Path) -> list[str]:
                 lineage.get("edges"), list
             ):
                 errors.append("lineage: nodes and edges must be arrays")
+            else:
+                node_ids: set[str] = set()
+                for index, node in enumerate(lineage["nodes"], start=1):
+                    if not isinstance(node, Mapping) or not isinstance(node.get("id"), str) or not node["id"].strip() or not isinstance(node.get("label"), str) or not node["label"].strip():
+                        errors.append(f"lineage: node {index} must contain non-empty id and label")
+                        continue
+                    if node["id"] in node_ids:
+                        errors.append(f"lineage: duplicate node id: {node['id']}")
+                    node_ids.add(node["id"])
+                for index, edge in enumerate(lineage["edges"], start=1):
+                    valid_edge = (
+                        isinstance(edge, Mapping)
+                        and isinstance(edge.get("source"), str)
+                        and edge["source"].strip()
+                        and isinstance(edge.get("target"), str)
+                        and edge["target"].strip()
+                        and isinstance(edge.get("relation"), str)
+                        and edge["relation"].strip()
+                    )
+                    if not valid_edge:
+                        errors.append(f"lineage: edge {index} must contain non-empty source, target, and relation")
+                    if isinstance(edge, Mapping):
+                        source = edge.get("source")
+                        target = edge.get("target")
+                        if isinstance(source, str) and source not in node_ids:
+                            errors.append(f"lineage: edge {index} references unknown source node: {source}")
+                        if isinstance(target, str) and target not in node_ids:
+                            errors.append(f"lineage: edge {index} references unknown target node: {target}")
         except (json.JSONDecodeError, OSError) as exc:
             errors.append(f"lineage: invalid JSON: {exc}")
 
@@ -332,6 +360,25 @@ def check_release_readiness(profile_dir: Path) -> list[str]:
             prompt_sha256 = case.get("prompt_sha256") if isinstance(case, Mapping) else None
             if not isinstance(prompt_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", prompt_sha256):
                 errors.append(f"evals/{filename} case {case_id} must record prompt_sha256")
+            if isinstance(case, Mapping):
+                from .evaluation import _score_case
+
+                try:
+                    recomputed = _score_case(dict(case))
+                except ValueError:
+                    errors.append(f"evals/{filename} case {case_id} is not reproducible")
+                else:
+                    if any(
+                        case.get(field) != recomputed.get(field)
+                        for field in (
+                            "prompt_sha256",
+                            "raw_output_sha256",
+                            "raw_score",
+                            "verdict",
+                            "forbidden_hits",
+                        )
+                    ):
+                        errors.append(f"evals/{filename} case {case_id} does not match recomputed evidence")
 
     provenance_path = profile_dir / "provenance.yaml"
     if provenance_path.is_file():

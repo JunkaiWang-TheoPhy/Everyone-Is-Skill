@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Nima Arkani-Hamed",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.ias.edu/scholars/arkani-hamed"
+    },
+    {
+      "type": "news-profile",
+      "value": "https://www.ias.edu/news/nima-arkani-hamed-fundamental-science"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "nima-arkani-hamed",
+  "status": "evidence-complete",
+  "method_scope": "On-shell scattering amplitudes, positive geometry, consistency constraints on effective theories, and representation-changing model construction.",
+  "coauthor_policy": "Treat results with Cachazo, Cheung, Kaplan, Trnka, and other collaborators as shared; attribute only operations recurring across independent collaborations and periods.",
+  "target_type": "scientist"
+}

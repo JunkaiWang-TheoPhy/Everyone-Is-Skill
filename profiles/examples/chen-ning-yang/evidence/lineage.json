@@ -1,0 +1,81 @@
+{
+  "nodes": [
+    {
+      "id": "chen-ning-yang",
+      "label": "Chen-Ning Yang",
+      "kind": "person"
+    },
+    {
+      "id": "yang-stony-profile",
+      "label": "C. N. Yang institutional biography",
+      "kind": "source"
+    },
+    {
+      "id": "yang-mills-1954",
+      "label": "Conservation of Isotopic Spin and Isotopic Gauge Invariance",
+      "kind": "source"
+    },
+    {
+      "id": "lee-yang-parity-1956",
+      "label": "Question of Parity Conservation in Weak Interactions",
+      "kind": "source"
+    },
+    {
+      "id": "yang-nobel-lecture-1957",
+      "label": "The law of parity conservation and other symmetry laws of physics",
+      "kind": "source"
+    },
+    {
+      "id": "yang-delta-gas-1967",
+      "label": "Some Exact Results for the Many-Body Problem in One Dimension with Repulsive Delta-Function Interaction",
+      "kind": "source"
+    },
+    {
+      "id": "yang-nbody-smatrix-1968",
+      "label": "S Matrix for the One-Dimensional N-Body Problem",
+      "kind": "source"
+    },
+    {
+      "id": "wu-yang-phase-1975",
+      "label": "Concept of nonintegrable phase factors and global formulation of gauge fields",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "yang-stony-profile",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yang-mills-1954",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "lee-yang-parity-1956",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yang-nobel-lecture-1957",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yang-delta-gas-1967",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yang-nbody-smatrix-1968",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wu-yang-phase-1975",
+      "target": "chen-ning-yang",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

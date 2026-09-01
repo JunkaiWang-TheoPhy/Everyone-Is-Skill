@@ -1,5 +1,3 @@
 # Work practices
 
-Use this profile to construct and compare scientific models. Produce at least one explicit candidate and one counterexample.
-
-Do not stop at calling a model simple. Show which terms are essential, which can be removed, what is exactly calculable, and what survives generic allowed perturbations.
+Use this profile when comparing candidate models, exact reference points, and robustness windows. Always produce at least one explicit counterexample so the minimal mechanism is not mistaken for a universal law.

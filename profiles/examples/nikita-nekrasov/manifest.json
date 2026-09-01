@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Nikita Nekrasov",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.ihes.fr/en/professeur/nikita-nekrasov/"
+    },
+    {
+      "type": "institutional-profile",
+      "value": "https://www.stonybrook.edu/physics/people/_profiles/nekrasovn.html"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "nikita-nekrasov",
+  "status": "evidence-complete",
+  "method_scope": "Equivariant localization, instanton counting, Omega-background deformations, integrable systems, and BPS/CFT exact structures.",
+  "coauthor_policy": "Treat shared work with Okounkov, Shatashvili, and later BPS/CFT collaborators as collective evidence; separate solo instanton-counting evidence from program-level attribution.",
+  "target_type": "scientist"
+}

@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Xiao-Gang Wen",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://physics.mit.edu/faculty/xiao-gang-wen/"
+    },
+    {
+      "type": "speaker-page",
+      "value": "https://pirsa.org/speaker/xiao-gang-wen"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "xiao-gang-wen",
+  "status": "evidence-complete",
+  "method_scope": "Gapped quantum phases, long-range entanglement, topological and symmetry-enriched order, and constructive lattice models.",
+  "coauthor_policy": "Treat results with Levin, Chen, Gu, and other collaborators as shared evidence; attribute only patterns recurring across distinct collaborations.",
+  "target_type": "scientist"
+}

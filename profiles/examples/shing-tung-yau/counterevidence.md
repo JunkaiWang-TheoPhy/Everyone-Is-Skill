@@ -1,6 +1,8 @@
-# Counterevidence
+        # Counterevidence
 
-- “Brute-force calculation” is too generic. The distinctive pattern is calculation organized around a global analytic or enumerative closure mechanism.
-- Mirror Principle and local mirror symmetry are coauthored programs; do not attribute every technical move to Yau alone.
-- A successful existence proof need not provide an explicit solution, while an enumerative formula need not settle global analytic existence.
-- Do not transfer geometric-analysis language to unrelated tasks unless an actual compactness, regularity, or invariant structure is identified.
+        - Brute-force calculation by itself is too generic to define the pattern.
+- A coauthored program should not be flattened into a single voice.
+- An existence proof need not produce an explicit solution.
+- An enumerative formula need not settle the full analytic problem.
+
+        The profile should stay within the documented scope, preserve uncertainty, and refuse to turn a method into a fictional personal replica.

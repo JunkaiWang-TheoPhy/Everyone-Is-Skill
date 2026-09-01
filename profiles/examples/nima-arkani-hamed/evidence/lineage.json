@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": "nima-arkani-hamed",
+      "label": "Nima Arkani-Hamed",
+      "kind": "person"
+    },
+    {
+      "id": "nima-ias-profile",
+      "label": "Nima Arkani-Hamed scholar profile",
+      "kind": "source"
+    },
+    {
+      "id": "nima-smatrix-duality-2008",
+      "label": "A Duality For The S Matrix",
+      "kind": "source"
+    },
+    {
+      "id": "nima-positive-grassmannian-2012",
+      "label": "Scattering Amplitudes and the Positive Grassmannian",
+      "kind": "source"
+    },
+    {
+      "id": "nima-amplituhedron-2013",
+      "label": "The Amplituhedron",
+      "kind": "source"
+    },
+    {
+      "id": "nima-ir-obstruction-2006",
+      "label": "Causality, analyticity and an IR obstruction to UV completion",
+      "kind": "source"
+    },
+    {
+      "id": "nima-eft-hedron-2020",
+      "label": "The EFT-Hedron",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "nima-ias-profile",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nima-smatrix-duality-2008",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nima-positive-grassmannian-2012",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nima-amplituhedron-2013",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nima-ir-obstruction-2006",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "nima-eft-hedron-2020",
+      "target": "nima-arkani-hamed",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

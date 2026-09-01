@@ -1,22 +1,31 @@
 {
-  "schema_version": "1.0",
-  "slug": "alexei-kitaev",
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
   "display_name": "Alexei Kitaev",
-  "target_type": "scientist",
-  "status": "draft",
-  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
   "identity_anchors": [
     {
       "type": "official-profile",
       "value": "https://heritageproject.caltech.edu/interviews-updates/alexei-kitaev"
     },
     {
-      "type": "inspire-author",
-      "value": "https://inspirehep.net/authors/1002740"
+      "type": "awards-profile",
+      "value": "https://www.macfound.org/fellows/class-of-2008/alexei-kitaev"
     }
   ],
-  "boundaries": [
-    "This profile is not an impersonation or a source of private mental states.",
-    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
-  ]
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "alexei-kitaev",
+  "status": "peer-reviewed",
+  "peer_review": {
+    "independent": true,
+    "reviewer": "peer_review_three_profiles",
+    "reviewed_at": "2026-09-02",
+    "scope": "supported-method claims, coauthor leakage, source metadata, counterevidence, and seven two-run behavior suites"
+  },
+  "method_scope": "Minimal quantum models, topological protection, exact reference points, and robust phase-level reasoning.",
+  "coauthor_policy": "Use solo papers and the first-person interview to anchor individual recurrence; retain explicit risk for shared quantum-memory work.",
+  "target_type": "scientist"
 }

@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Chen-Ning Yang",
+  "identity_anchors": [
+    {
+      "type": "nobel-biography",
+      "value": "https://www.nobelprize.org/prizes/physics/1957/yang/biographical/"
+    },
+    {
+      "type": "institutional-biography",
+      "value": "https://www.tsinghua.edu.cn/en/info/1244/2414.htm"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "chen-ning-yang",
+  "status": "evidence-complete",
+  "method_scope": "Symmetry tests, gauge principles, exact many-body structures, and the global geometry of fields.",
+  "coauthor_policy": "Treat Yang-Mills, Lee-Yang, and Wu-Yang results as shared work; infer individual method only from recurrence across distinct collaborations and solo papers.",
+  "target_type": "scientist"
+}

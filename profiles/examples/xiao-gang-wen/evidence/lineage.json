@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": "xiao-gang-wen",
+      "label": "Xiao-Gang Wen",
+      "kind": "person"
+    },
+    {
+      "id": "wen-mit-profile",
+      "label": "Xiao-Gang Wen faculty profile",
+      "kind": "source"
+    },
+    {
+      "id": "wen-string-net-2005",
+      "label": "String-net condensation: A physical mechanism for topological phases",
+      "kind": "source"
+    },
+    {
+      "id": "wen-lattice-gravity-2006",
+      "label": "A lattice bosonic model as a quantum theory of gravity",
+      "kind": "source"
+    },
+    {
+      "id": "wen-local-unitary-2010",
+      "label": "Local unitary transformation, long-range quantum entanglement, wave function renormalization, and topological order",
+      "kind": "source"
+    },
+    {
+      "id": "wen-1d-classification-2011",
+      "label": "Classification of gapped symmetric phases in one-dimensional spin systems",
+      "kind": "source"
+    },
+    {
+      "id": "wen-group-cohomology-2012",
+      "label": "Symmetry protected topological orders and the group cohomology of their symmetry group",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "wen-mit-profile",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wen-string-net-2005",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wen-lattice-gravity-2006",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wen-local-unitary-2010",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wen-1d-classification-2011",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "wen-group-cohomology-2012",
+      "target": "xiao-gang-wen",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

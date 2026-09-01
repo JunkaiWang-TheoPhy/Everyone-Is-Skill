@@ -1,4 +1,111 @@
 {
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "id": "shing-tung-yau",
+      "label": "Shing-Tung Yau",
+      "kind": "person"
+    },
+    {
+      "id": "yau-harvard-profile",
+      "label": "Shing-Tung Yau faculty profile",
+      "kind": "source"
+    },
+    {
+      "id": "yau-pnas-1977",
+      "label": "Calabi's conjecture and some new results in algebraic geometry",
+      "kind": "source"
+    },
+    {
+      "id": "yau-icm-1978",
+      "label": "The role of partial differential equations in differential geometry",
+      "kind": "source"
+    },
+    {
+      "id": "yau-asterisque-1978",
+      "label": "Première classe de Chern et courbure de Ricci: preuve de la conjecture de Calabi",
+      "kind": "source"
+    },
+    {
+      "id": "yau-harmonic-1975",
+      "label": "Harmonic functions on complete Riemannian manifolds",
+      "kind": "source"
+    },
+    {
+      "id": "cheng-yau-equations-1975",
+      "label": "Differential equations on Riemannian manifolds and their geometric applications",
+      "kind": "source"
+    },
+    {
+      "id": "schoen-yau-positive-mass-1979",
+      "label": "On the proof of the positive mass conjecture in general relativity",
+      "kind": "source"
+    },
+    {
+      "id": "schoen-yau-singularities-2017",
+      "label": "Positive Scalar Curvature and Minimal Hypersurface Singularities",
+      "kind": "source"
+    },
+    {
+      "id": "yau-mirror-principle-1997",
+      "label": "Mirror Principle I",
+      "kind": "source"
+    },
+    {
+      "id": "yau-local-mirror-1999",
+      "label": "Local Mirror Symmetry: Calculations and Interpretations",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "yau-harvard-profile",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-pnas-1977",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-icm-1978",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-asterisque-1978",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-harmonic-1975",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "cheng-yau-equations-1975",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "schoen-yau-positive-mass-1979",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "schoen-yau-singularities-2017",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-mirror-principle-1997",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "yau-local-mirror-1999",
+      "target": "shing-tung-yau",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
 }

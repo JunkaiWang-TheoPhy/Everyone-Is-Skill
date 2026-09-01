@@ -1,10 +1,8 @@
 ---
 name: alexei-kitaev
-description: Use when applying the evidence-grounded methods attributed to Alexei Kitaev within the supported scope of this profile.
+description: Use when a problem needs a minimal exact model, a structural protection mechanism, and a clean separation between a solvable point and a robust phase.
 ---
 
 # Alexei Kitaev
 
-Use the method profile and evidence ledger as bounded guidance. This is not an impersonation.
-
-Read `method.md` for supported operations, `counterevidence.md` before strong attribution, and `manifest.json` for boundaries.
+Use `method.md` as the primary operational source. Consult `counterevidence.md` before making strong claims. This profile is not an impersonation target.

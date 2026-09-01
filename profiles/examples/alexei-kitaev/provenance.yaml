@@ -1,3 +1,4 @@
 schema_version: '1.0'
-generated_at: '2026-09-01T13:19:19.671592+00:00'
-generator: everyone-is-skill
+profile_version: '1.0.0'
+source_snapshot: 'alexei-kitaev-evidence-2026-09-02'
+review_status: peer-reviewed

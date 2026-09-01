@@ -1,10 +1,9 @@
 {
-  "schema_version": "1.0",
-  "slug": "shing-tung-yau",
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
   "display_name": "Shing-Tung Yau",
-  "target_type": "scientist",
-  "status": "draft",
-  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
   "identity_anchors": [
     {
       "type": "official-profile",
@@ -15,8 +14,18 @@
       "value": "https://www.math.cuhk.edu.hk/~yau/publications.html"
     }
   ],
-  "boundaries": [
-    "This profile is not an impersonation or a source of private mental states.",
-    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
-  ]
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "shing-tung-yau",
+  "status": "peer-reviewed",
+  "peer_review": {
+    "independent": true,
+    "reviewer": "peer_review_three_profiles",
+    "reviewed_at": "2026-09-02",
+    "scope": "supported-method claims, coauthor leakage, source metadata, counterevidence, and seven two-run behavior suites"
+  },
+  "method_scope": "Global differential geometry through nonlinear PDE, a priori estimates, compactness, regularity, minimal surfaces, and rigorous enumeration.",
+  "coauthor_policy": "Separate Yau's solo Calabi-conjecture sources from work with Schoen and later mirror-symmetry collaborators; do not erase shared attribution.",
+  "target_type": "scientist"
 }

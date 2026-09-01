@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Warren Siegel",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.stonybrook.edu/physics/people/_profiles/siegelw.html"
+    },
+    {
+      "type": "homepage",
+      "value": "https://insti.physics.sunysb.edu/~siegel/plan.html"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "warren-siegel",
+  "status": "evidence-complete",
+  "method_scope": "Manifestly supersymmetric and covariant formulations, supergraphs, BRST/string-field organization, and compact field-theory notation.",
+  "coauthor_policy": "Treat the Superspace book and supergraph work as shared with Gates, Grisaru, and Rocek; rely on solo Fields and string-field texts for independent recurrence.",
+  "target_type": "scientist"
+}

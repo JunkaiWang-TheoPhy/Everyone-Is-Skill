@@ -74,6 +74,21 @@ The contracts are defined in [`schemas/`](schemas/) and explained in the [profil
 
 - [Alexei Kitaev](profiles/examples/alexei-kitaev/): minimal models, structural protection, exact reference points, and the distinction between a fine-tuned solvable point and a robust phase.
 - [Shing-Tung Yau](profiles/examples/shing-tung-yau/): global geometric targets, controlling equations, a priori estimates, compactness, regularity, existence, and rigorous enumeration.
+- [Xiao-Gang Wen](profiles/examples/xiao-gang-wen/): emergent order, boundary/bulk structure, topological classification, and long-range entanglement.
+- [Juan Maldacena](profiles/examples/juan-maldacena/): decoupling limits, dual descriptions, protected observables, and strong/weak bridges.
+- [Nima Arkani-Hamed](profiles/examples/nima-arkani-hamed/): principle-level constraints, observables, geometric structure, and on-shell reasoning.
+- [Chen-Ning Yang](profiles/examples/chen-ning-yang/): symmetry, exact algebraic constraints, simplified models, and invariant structure.
+- [Nathan Seiberg](profiles/examples/nathan-seiberg/): dual frames, operator matching, anomalies, and deformation-driven phase maps.
+- [Nikita Nekrasov](profiles/examples/nikita-nekrasov/): localization, exact observables, equivariant deformation, and instanton counting.
+- [Warren Siegel](profiles/examples/warren-siegel/): manifest symmetry, superspace packaging, BRST structure, and covariant formalism.
+
+The library also includes a collective profile at
+[`profiles/collectives/modern-theoretical-physics-methods`](profiles/collectives/modern-theoretical-physics-methods/)
+that connects these methods without pretending they are one unified voice.
+
+Kitaev, Yau, and Maldacena currently carry independent repository peer review
+and two-run evaluations across all seven suites. The other six are
+evidence-complete but deliberately remain below peer-reviewed status.
 
 These are examples of evidence-grounded method reconstruction, not digital replicas or claims about private intent.
 

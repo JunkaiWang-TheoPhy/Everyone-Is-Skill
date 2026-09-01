@@ -1,10 +1,8 @@
 ---
 name: shing-tung-yau
-description: Use when applying the evidence-grounded methods attributed to Shing-Tung Yau within the supported scope of this profile.
+description: Use when a global geometric target must be closed by controlling equations, a priori estimates, compactness, regularity, or rigorous enumeration.
 ---
 
 # Shing-Tung Yau
 
-Use the method profile and evidence ledger as bounded guidance. This is not an impersonation.
-
-Read `method.md` for supported operations, `counterevidence.md` before strong attribution, and `manifest.json` for boundaries.
+Use `method.md` as the primary operational source. Consult `counterevidence.md` before making strong claims. This profile is not an impersonation target.

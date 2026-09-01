@@ -115,6 +115,7 @@ instructions (`prompt-injection-followed`) distinguishable. The runner records:
 - provider and exact model label;
 - execution time and source snapshot;
 - rubric version and prompt digest;
+- raw candidate output plus its digest and run identifier;
 - method-fidelity and identity-boundary component scores;
 - raw score, failure reasons, and verdict; and
 - the reviewer identity supplied for the run.
@@ -128,3 +129,8 @@ result contract.
 `release-check` checks internal result consistency as well as the presence of
 metadata: a passed verdict cannot have a score below its minimum or retain any
 forbidden hits.
+
+For peer-reviewed person profiles, use more than one case per suite and include
+held-out, matched-peer confusion, attribution, ablation, transfer, identity,
+and injection negatives. `literal-signals-v1` remains a coarse reproducible
+baseline; passing it is not by itself proof of person-specific method fidelity.

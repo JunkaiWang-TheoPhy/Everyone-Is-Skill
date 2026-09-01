@@ -1,0 +1,91 @@
+{
+  "nodes": [
+    {
+      "id": "juan-maldacena",
+      "label": "Juan Maldacena",
+      "kind": "person"
+    },
+    {
+      "id": "maldacena-ias-profile",
+      "label": "Juan Maldacena scholar profile",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-cern-interview",
+      "label": "Interview: Juan Maldacena",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-ads-cft-1997",
+      "label": "The Large N Limit of Superconformal Field Theories and Supergravity",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-large-n-review-1999",
+      "label": "Large N Field Theories, String Theory and Gravity",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-eternal-2001",
+      "label": "Eternal black holes in Anti-de-Sitter",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-er-epr-2013",
+      "label": "Cool horizons for entangled black holes",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-syk-2016",
+      "label": "Comments on the Sachdev-Ye-Kitaev model",
+      "kind": "source"
+    },
+    {
+      "id": "maldacena-simple-black-hole-2023",
+      "label": "A simple quantum system that describes a black hole",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "maldacena-ias-profile",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-cern-interview",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-ads-cft-1997",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-large-n-review-1999",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-eternal-2001",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-er-epr-2013",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-syk-2016",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "maldacena-simple-black-hole-2023",
+      "target": "juan-maldacena",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

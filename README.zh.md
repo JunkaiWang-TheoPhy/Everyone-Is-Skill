@@ -74,6 +74,18 @@ profiles/<slug>/
 
 - [Alexei Kitaev](profiles/examples/alexei-kitaev/)：最小模型、结构性保护、精确参考点，以及微调可解点与鲁棒相之间的区别。
 - [Shing-Tung Yau](profiles/examples/shing-tung-yau/)：全局几何目标、控制方程、先验估计、紧致性、正则性、存在性与严格枚举。
+- [Xiao-Gang Wen](profiles/examples/xiao-gang-wen/)：涌现序、边界/体结构、拓扑分类与长程纠缠。
+- [Juan Maldacena](profiles/examples/juan-maldacena/)：解耦极限、双描述、受保护观测量与强弱桥接。
+- [Nima Arkani-Hamed](profiles/examples/nima-arkani-hamed/)：原则层约束、观测量、几何结构与 on-shell 推理。
+- [Chen-Ning Yang](profiles/examples/chen-ning-yang/)：对称性、精确代数约束、简化模型与不变量结构。
+- [Nathan Seiberg](profiles/examples/nathan-seiberg/)：双框架、算符匹配、反常与变形驱动的相图。
+- [Nikita Nekrasov](profiles/examples/nikita-nekrasov/)：局域化、精确观测量、等变变形与 instanton 计数。
+- [Warren Siegel](profiles/examples/warren-siegel/)：显式对称性、superspace 封装、BRST 结构与协变形式化。
+
+仓库还包含一个集合画像：
+[`profiles/collectives/modern-theoretical-physics-methods`](profiles/collectives/modern-theoretical-physics-methods/)，用于连接这些方法，同时不把它们伪装成单一声音。
+
+Kitaev、Yau 和 Maldacena 已完成独立仓库审查，并在七类评测中分别保留两次运行。其余六份已经达到证据完备，但刻意不标记为已同行审查。
 
 这些是有证据支撑的方法重建样例，不是数字替身，也不声称知道人物未公开的动机。
 

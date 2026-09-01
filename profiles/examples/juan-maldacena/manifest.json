@@ -1,0 +1,31 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Juan Maldacena",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.ias.edu/scholars/juan-maldacena"
+    },
+    {
+      "type": "curriculum-vitae",
+      "value": "https://www.ias.edu/sites/default/files/Maldacena_CV2024_0.pdf"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "juan-maldacena",
+  "status": "peer-reviewed",
+  "peer_review": {
+    "independent": true,
+    "reviewer": "peer_review_three_profiles",
+    "reviewed_at": "2026-09-02",
+    "scope": "supported-method claims, coauthor leakage, source metadata, counterevidence, and seven two-run behavior suites"
+  },
+  "method_scope": "Controlled limits, gauge/gravity duality, black-hole quantum information, and minimal quantum-gravity models.",
+  "coauthor_policy": "Treat results with Susskind, Stanford, Lin, Hartman, and other collaborators as shared; attribute only operations recurring across distinct source clusters.",
+  "target_type": "scientist"
+}

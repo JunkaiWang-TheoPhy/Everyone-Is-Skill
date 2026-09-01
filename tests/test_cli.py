@@ -107,6 +107,41 @@ class CliTests(unittest.TestCase):
             self.assertEqual(validated.returncode, 1)
             self.assertIn("evals/boundary-tests.json", validated.stderr)
 
+    def test_validate_rejects_dangling_or_malformed_lineage(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created = self.run_cli(
+                "new-profile",
+                "--output",
+                tmp,
+                "--slug",
+                "example-scientist",
+                "--name",
+                "Example Scientist",
+                "--kind",
+                "scientist",
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            profile = Path(tmp) / "example-scientist"
+            manifest_path = profile / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["identity_anchors"] = [{"type": "homepage", "value": "https://example.test"}]
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            (profile / "evidence" / "lineage.json").write_text(
+                json.dumps(
+                    {
+                        "nodes": [{"id": "subject", "label": "Subject"}],
+                        "edges": [{"source": "missing", "target": "subject", "label": "supports"}],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            validated = self.run_cli("validate", str(profile))
+
+            self.assertEqual(validated.returncode, 1)
+            self.assertIn("must contain non-empty source, target, and relation", validated.stderr)
+            self.assertIn("unknown source node: missing", validated.stderr)
+
     def test_validate_repository_command(self):
         result = self.run_cli("validate-repo", ".")
         self.assertEqual(result.returncode, 0, result.stderr)

@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "id": "modern-theoretical-physics-methods",
+      "label": "Modern Theoretical Physics Methods",
+      "kind": "team"
+    },
+    {
+      "id": "repo-manifest",
+      "label": "Everyone-Is-Skill repository manifest",
+      "kind": "source"
+    },
+    {
+      "id": "collective-method",
+      "label": "Modern theoretical physics methods profile",
+      "kind": "source"
+    },
+    {
+      "id": "profile-library",
+      "label": "Scientist profile library",
+      "kind": "source"
+    },
+    {
+      "id": "collective-governance",
+      "label": "Collective profile governance note",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "repo-manifest",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-method",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "profile-library",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-governance",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {
+      "id": "warren-siegel",
+      "label": "Warren Siegel",
+      "kind": "person"
+    },
+    {
+      "id": "siegel-stony-profile",
+      "label": "Warren Siegel faculty profile",
+      "kind": "source"
+    },
+    {
+      "id": "siegel-supergraphs-1979",
+      "label": "Improved Methods for Supergraphs",
+      "kind": "source"
+    },
+    {
+      "id": "siegel-superspace-book",
+      "label": "Superspace, or One Thousand and One Lessons in Supersymmetry",
+      "kind": "source"
+    },
+    {
+      "id": "siegel-fields-book",
+      "label": "Fields",
+      "kind": "source"
+    },
+    {
+      "id": "siegel-string-field-book",
+      "label": "Introduction to String Field Theory",
+      "kind": "source"
+    },
+    {
+      "id": "siegel-superspace-duality-1993",
+      "label": "Superspace duality in low-energy superstrings",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "siegel-stony-profile",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "siegel-supergraphs-1979",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "siegel-superspace-book",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "siegel-fields-book",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "siegel-string-field-book",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "siegel-superspace-duality-1993",
+      "target": "warren-siegel",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
+}

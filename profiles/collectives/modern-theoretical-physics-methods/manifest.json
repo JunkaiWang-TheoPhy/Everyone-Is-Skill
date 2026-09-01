@@ -1,0 +1,39 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Modern Theoretical Physics Methods",
+  "dissent_policy": "Preserve minority branches, document unresolved tensions, and compare methods by shared invariants instead of forcing a false consensus.",
+  "historical_phases": [
+    "symmetry and exact structure",
+    "geometry, PDE, and rigorous control",
+    "duality, topology, and localization",
+    "amplitudes, bootstrap-style constraints, and quantum information adjacent methods"
+  ],
+  "identity_anchors": [
+    {
+      "type": "repository",
+      "value": "https://github.com/JunkaiWang-TheoPhy/Everyone-Is-Skill"
+    },
+    {
+      "type": "collection-note",
+      "value": "https://github.com/JunkaiWang-TheoPhy/Everyone-Is-Skill/tree/main/profiles/collectives/modern-theoretical-physics-methods"
+    }
+  ],
+  "intended_use": "Comparative routing among documented theoretical-physics methods; this is a curated collection, not a claim that the subjects formed one team or shared one doctrine.",
+  "profile_version": "1.0.0",
+  "roles": [
+    "model builder",
+    "analytic estimator",
+    "duality mapper",
+    "topological classifier",
+    "exact computation specialist",
+    "formalism and covariance specialist"
+  ],
+  "schema_version": "1.0",
+  "slug": "modern-theoretical-physics-methods",
+  "status": "evidence-complete",
+  "collection_type": "comparative-method-map",
+  "target_type": "team"
+}

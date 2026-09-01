@@ -25,6 +25,10 @@ use the version declared in `pyproject.toml` and the Codex plugin manifest.
   result data remains quarantined.
 - Removal of the unresolved MirrorMind entry from the supported integration
   ledger.
+- Nine evidence-complete scientist method profiles plus a comparative
+  collective that preserves historical phases, roles, and dissent.
+- Independent repository peer review and two-run, seven-suite behavior records
+  for the Kitaev, Yau, and Maldacena profiles.
 
 ## 0.1.0 - 2026-09-01
 

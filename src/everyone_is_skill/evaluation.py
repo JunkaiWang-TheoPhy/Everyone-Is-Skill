@@ -93,6 +93,7 @@ def _score_case(case: object) -> dict[str, object]:
         **case,
         "case_id": case_id,
         "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
+        "raw_output_sha256": hashlib.sha256(candidate.encode("utf-8")).hexdigest(),
         "expected_hits": expected_hits,
         "expected_misses": expected_misses,
         "forbidden_hits": forbidden_hits,

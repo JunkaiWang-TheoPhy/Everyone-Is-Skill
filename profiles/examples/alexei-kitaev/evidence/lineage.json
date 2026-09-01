@@ -1,4 +1,71 @@
 {
-  "nodes": [],
-  "edges": []
+  "nodes": [
+    {
+      "id": "alexei-kitaev",
+      "label": "Alexei Kitaev",
+      "kind": "person"
+    },
+    {
+      "id": "kitaev-caltech-interview",
+      "label": "Alexei Kitaev, Theoretical Physicist",
+      "kind": "source"
+    },
+    {
+      "id": "kitaev-anyons-1997",
+      "label": "Fault-tolerant quantum computation by anyons",
+      "kind": "source"
+    },
+    {
+      "id": "kitaev-memory-2001",
+      "label": "Topological quantum memory",
+      "kind": "source"
+    },
+    {
+      "id": "kitaev-majorana-2000",
+      "label": "Unpaired Majorana fermions in quantum wires",
+      "kind": "source"
+    },
+    {
+      "id": "kitaev-honeycomb-2005",
+      "label": "Anyons in an exactly solved model and beyond",
+      "kind": "source"
+    },
+    {
+      "id": "kitaev-periodic-table-2009",
+      "label": "Periodic table for topological insulators and superconductors",
+      "kind": "source"
+    }
+  ],
+  "edges": [
+    {
+      "source": "kitaev-caltech-interview",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "kitaev-anyons-1997",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "kitaev-memory-2001",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "kitaev-majorana-2000",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "kitaev-honeycomb-2005",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "kitaev-periodic-table-2009",
+      "target": "alexei-kitaev",
+      "relation": "evidence-reviewed-for"
+    }
+  ]
 }

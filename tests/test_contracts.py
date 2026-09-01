@@ -76,6 +76,34 @@ class ProfileManifestContractTests(unittest.TestCase):
         self.assertIn("identity_anchors entries must contain non-empty type and value", errors)
         self.assertIn("boundaries entries must be non-empty strings", errors)
 
+    def test_peer_reviewed_status_requires_independent_review_metadata(self):
+        manifest = {
+            "schema_version": "1.0",
+            "slug": "alexei-kitaev",
+            "display_name": "Alexei Kitaev",
+            "target_type": "scientist",
+            "status": "peer-reviewed",
+            "intended_use": "Research-method reconstruction",
+            "identity_anchors": [{"type": "homepage", "value": "https://example.test"}],
+            "boundaries": ["Not an impersonation."],
+            "peer_review": {"independent": False, "reviewer": "", "reviewed_at": "", "scope": ""},
+        }
+        errors = validate_profile_manifest(manifest)
+        self.assertIn("peer_review must record an independent reviewer, date, and scope", errors)
+
+    def test_rejects_unknown_profile_status(self):
+        manifest = {
+            "schema_version": "1.0",
+            "slug": "alexei-kitaev",
+            "display_name": "Alexei Kitaev",
+            "target_type": "scientist",
+            "status": "celebrity-simulation",
+            "intended_use": "Research-method reconstruction",
+            "identity_anchors": [{"type": "homepage", "value": "https://example.test"}],
+            "boundaries": ["Not an impersonation."],
+        }
+        self.assertTrue(any("profile status must be one of" in error for error in validate_profile_manifest(manifest)))
+
 
 if __name__ == "__main__":
     unittest.main()

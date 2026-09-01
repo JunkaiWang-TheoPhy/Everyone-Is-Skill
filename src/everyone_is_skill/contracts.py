@@ -18,6 +18,14 @@ CLAIM_STATUSES = {
 ATTRIBUTION_STRENGTHS = {"weak", "moderate", "strong"}
 COAUTHOR_RISKS = {"unknown", "low", "moderate", "high"}
 TARGET_TYPES = {"scientist", "expert", "creator", "team", "self", "colleague"}
+PROFILE_STATUSES = {
+    "draft",
+    "evidence-complete",
+    "behavior-tested",
+    "peer-reviewed",
+    "release-ready",
+    "deprecated",
+}
 
 
 def _missing(record: Mapping[str, object], required: set[str]) -> list[str]:
@@ -84,6 +92,22 @@ def validate_profile_manifest(record: Mapping[str, object]) -> list[str]:
 
     if record["target_type"] not in TARGET_TYPES:
         errors.append(f"target_type must be one of: {', '.join(sorted(TARGET_TYPES))}")
+    status = record.get("status")
+    if status is not None and status not in PROFILE_STATUSES:
+        errors.append(f"profile status must be one of: {', '.join(sorted(PROFILE_STATUSES))}")
+    if status in {"peer-reviewed", "release-ready"}:
+        review = record.get("peer_review")
+        if not (
+            isinstance(review, Mapping)
+            and review.get("independent") is True
+            and isinstance(review.get("reviewer"), str)
+            and review["reviewer"].strip()
+            and isinstance(review.get("reviewed_at"), str)
+            and review["reviewed_at"].strip()
+            and isinstance(review.get("scope"), str)
+            and review["scope"].strip()
+        ):
+            errors.append("peer_review must record an independent reviewer, date, and scope")
     anchors = record["identity_anchors"]
     if not isinstance(anchors, list) or not anchors:
         errors.append("identity_anchors must contain at least one anchor")

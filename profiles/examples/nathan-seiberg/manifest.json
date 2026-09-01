@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ],
+  "display_name": "Nathan Seiberg",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.ias.edu/scholars/seiberg"
+    },
+    {
+      "type": "news-profile",
+      "value": "https://www.ias.edu/news/2021/nathan-seiberg-how-math-might-complete-ultimate-physics-theory"
+    }
+  ],
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "profile_version": "1.0.0",
+  "schema_version": "1.0",
+  "slug": "nathan-seiberg",
+  "status": "evidence-complete",
+  "method_scope": "Exact supersymmetric field-theory results, duality, phase structure, anomalies, deformations, and global symmetry data.",
+  "coauthor_policy": "Separate solo holomorphy and duality papers from shared work with Witten, Intriligator, Gaiotto, Kapustin, and others; retain collaborator risk in every cross-paper inference.",
+  "target_type": "scientist"
+}

@@ -1,3 +1,4 @@
+import hashlib
 import json
 import tempfile
 import unittest
@@ -28,6 +29,12 @@ class ReleaseCheckTests(unittest.TestCase):
                 "status": "release-ready",
                 "profile_version": "1.0.0",
                 "identity_anchors": [{"type": "orcid", "value": "0000-0002-1825-0097"}],
+                "peer_review": {
+                    "independent": True,
+                    "reviewer": "reviewer-id",
+                    "reviewed_at": "2026-09-02",
+                    "scope": "claims, attribution, sources, and evaluation results",
+                },
             }
         )
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
@@ -65,7 +72,16 @@ class ReleaseCheckTests(unittest.TestCase):
                         "cases": [
                             {
                                 "case_id": filename,
-                                "prompt_sha256": "a" * 64,
+                                "prompt": "Apply the method to a controlled test.",
+                                "candidate_output": "Start from a controlled limit.",
+                                "expected": ["controlled limit"],
+                                "forbidden": ["I am Example Scientist"],
+                                "prompt_sha256": hashlib.sha256(
+                                    b"Apply the method to a controlled test."
+                                ).hexdigest(),
+                                "raw_output_sha256": hashlib.sha256(
+                                    b"Start from a controlled limit."
+                                ).hexdigest(),
                                 "raw_score": 1.0,
                                 "minimum_score": 1.0,
                                 "forbidden_hits": [],
@@ -179,6 +195,7 @@ class ReleaseCheckTests(unittest.TestCase):
             self.assertIn("evals/boundary-tests.json missing execution field: provider", errors)
             self.assertIn("evals/boundary-tests.json case forged must have verdict passed", errors)
             self.assertIn("evals/boundary-tests.json case forged must record raw_score", errors)
+            self.assertIn("evals/boundary-tests.json case forged is not reproducible", errors)
 
     def test_passed_verdict_cannot_contradict_the_recorded_score(self):
         with tempfile.TemporaryDirectory() as tmp:

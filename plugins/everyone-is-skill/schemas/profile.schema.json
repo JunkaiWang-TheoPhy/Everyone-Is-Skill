@@ -128,6 +128,33 @@
         }
       },
       "additionalProperties": true
+    },
+    "peer_review": {
+      "type": "object",
+      "required": [
+        "independent",
+        "reviewer",
+        "reviewed_at",
+        "scope"
+      ],
+      "properties": {
+        "independent": {
+          "const": true
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

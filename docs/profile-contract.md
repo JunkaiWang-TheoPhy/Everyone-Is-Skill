@@ -35,6 +35,11 @@ structural contract above. A release-ready profile must declare a semantic
 `profile_version`, use `status: "release-ready"`, and repeat the same version in
 `provenance.yaml`. Imported profiles must set `imported_from.trust: reviewed`.
 
+`peer-reviewed` status must name an independent reviewer, review date, and
+scope in `manifest.peer_review`. Repository review means review of the bounded
+profile and its evidence; it must never be described as endorsement by the
+profile subject.
+
 ## Required evidence claim fields
 
 Each non-empty line in `evidence/claims.jsonl` must be a JSON object with:
