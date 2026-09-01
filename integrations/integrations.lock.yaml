@@ -3,8 +3,52 @@ generated_at: "2026-09-01T00:00:00+08:00"
 policy:
   vendor_code: false
   preserve_upstream_notices: true
-  unresolved_items_allowed: true
+  unresolved_adapter_items_allowed: false
 sources:
+  - id: arxiv-api
+    display_name: arXiv API
+    repository: arXiv/arxiv-docs
+    url: https://github.com/arXiv/arxiv-docs/blob/develop/source/help/api/user-manual.md
+    license: API and per-record terms
+    license_status: terms_reviewed
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: public preprint metadata and abstracts by stable arXiv identifier
+    adapter_status: implemented
+    bundled: false
+  - id: inspire-rest-api
+    display_name: INSPIRE REST API
+    repository: inspirehep/rest-api-doc
+    url: https://github.com/inspirehep/rest-api-doc
+    license: CC0 for most metadata; field restrictions apply
+    license_status: terms_reviewed
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: HEP literature metadata by recid, arXiv, DOI, or ORCID identifier
+    adapter_status: implemented
+    bundled: false
+  - id: openalex-api
+    display_name: OpenAlex API
+    repository: null
+    url: https://help.openalex.org/api/llm-quick-reference/
+    license: CC0 metadata; metered API terms
+    license_status: terms_reviewed
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: work metadata and reconstructed abstracts by OpenAlex ID or DOI
+    adapter_status: implemented
+    bundled: false
+  - id: orcid-public-api
+    display_name: ORCID Public API
+    repository: null
+    url: https://info.orcid.org/documentation/integration-and-api-faq/
+    license: ORCID Public API terms
+    license_status: terms_reviewed
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: authenticated read-public work summaries for a stable ORCID iD
+    adapter_status: implemented_token_required
+    bundled: false
   - id: distill-everything
     display_name: Distill-Everything
     repository: AITCX08/Distill-Everything
@@ -14,6 +58,7 @@ sources:
     classification: adapter
     review_date: 2026-09-01
     contribution: local-first ingestion, transcription, cleanup, Markdown output, and RAG packaging
+    adapter_status: implemented_data_only
     bundled: false
   - id: anything2skill
     display_name: anything2skill
@@ -21,9 +66,10 @@ sources:
     url: https://github.com/Nouischen/anything2skill
     license: MIT
     license_status: declared
-    classification: inspiration
+    classification: adapter
     review_date: 2026-09-01
     contribution: value pre-check, anti-bloat fusion, and review-card activation
+    adapter_status: implemented_data_only
     bundled: false
   - id: sci-brain
     display_name: sci-brain
@@ -34,6 +80,7 @@ sources:
     classification: adapter
     review_date: 2026-09-01
     contribution: scientist-oriented ingestion around papers, PDFs, Zotero, and research workflows
+    adapter_status: implemented_data_only
     bundled: false
   - id: research-taste-distillation
     display_name: research-taste-distillation
@@ -41,9 +88,10 @@ sources:
     url: https://github.com/Jingqi-Xu/research-taste-distillation
     license: MIT
     license_status: declared
-    classification: inspiration
+    classification: adapter
     review_date: 2026-09-01
     contribution: research philosophy extraction and critique flow
+    adapter_status: implemented_data_only
     bundled: false
   - id: nuwa-skill
     display_name: nuwa-skill
@@ -51,9 +99,10 @@ sources:
     url: https://github.com/alchaincyf/nuwa-skill
     license: MIT
     license_status: declared
-    classification: inspiration
+    classification: adapter
     review_date: 2026-09-01
     contribution: person distillation, mental models, decision heuristics, and expression DNA extraction
+    adapter_status: implemented_data_only
     bundled: false
   - id: distilly
     display_name: distilly
@@ -61,9 +110,10 @@ sources:
     url: https://github.com/titanwings/distilly
     license: MIT
     license_status: declared
-    classification: inspiration
+    classification: adapter
     review_date: 2026-09-01
     contribution: capability/persona split and reusable skill generation
+    adapter_status: implemented_data_only
     bundled: false
   - id: person-distillation-foundations
     display_name: person-distillation-foundations
@@ -81,9 +131,10 @@ sources:
     url: https://github.com/InternScience/Virtual-Scientists
     license: Apache-2.0
     license_status: declared
-    classification: inspiration
+    classification: adapter
     review_date: 2026-09-01
     contribution: multi-agent scientific system design and team orchestration
+    adapter_status: implemented_data_only
     bundled: false
   - id: scientific-agents
     display_name: scientific-agents
@@ -94,6 +145,7 @@ sources:
     classification: adapter
     review_date: 2026-09-01
     contribution: expert-thinking AGENTS.md profiles for scientific reasoning
+    adapter_status: implemented_data_only
     bundled: false
   - id: scientific-agent-skills
     display_name: scientific-agent-skills
@@ -104,6 +156,7 @@ sources:
     classification: adapter
     review_date: 2026-09-01
     contribution: skill library structure and scientific tool catalog patterns
+    adapter_status: implemented_data_only
     bundled: false
   - id: omniscientist-v2
     display_name: OmniScientist V2
@@ -114,14 +167,5 @@ sources:
     classification: adapter
     review_date: 2026-09-01
     contribution: provenance, workflow, and co-evolving scientist ecosystem structure
-    bundled: false
-  - id: mirrormind
-    display_name: MirrorMind
-    repository: null
-    url: null
-    license: null
-    license_status: unresolved
-    classification: unresolved
-    review_date: 2026-09-01
-    contribution: listed during review, but the canonical upstream repository was not confirmed
+    adapter_status: implemented_data_only
     bundled: false

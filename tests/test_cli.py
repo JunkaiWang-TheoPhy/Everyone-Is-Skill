@@ -235,6 +235,44 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(json.loads(result.stdout)["status"], "passed")
 
+    def test_fetch_scholarly_rejects_unknown_adapter(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = self.run_cli(
+                "fetch-scholarly",
+                "--source",
+                "unknown",
+                "--identifier",
+                "x",
+                "--output",
+                str(Path(tmp) / "out.jsonl"),
+            )
+            self.assertNotEqual(result.returncode, 0)
+
+    def test_import_upstream_exports_quarantined_jsonl(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            upstream = root / "upstream"
+            upstream.mkdir()
+            artifact = upstream / "output" / "review-card.json"
+            artifact.parent.mkdir()
+            artifact.write_text(json.dumps({"review": "Upstream result"}), encoding="utf-8")
+            output = root / "export.jsonl"
+            result = self.run_cli(
+                "import-upstream",
+                "--input",
+                str(upstream),
+                "--format",
+                "anything2skill",
+                "--upstream-url",
+                "https://github.com/Nouischen/anything2skill",
+                "--upstream-license",
+                "MIT",
+                "--output",
+                str(output),
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue(json.loads(output.read_text(encoding="utf-8"))["instruction_quarantine"])
+
     def test_import_reference_records_upstream_without_copying_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli(

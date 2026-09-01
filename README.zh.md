@@ -21,7 +21,7 @@ Everyone Is a Skill 将人物、团队、研究学派、创作者或一组作品
 
 > 每个人都会留下可学习的方法，但没有任何人可以被一个 Skill 完整替代。
 
-`0.1.0` 建立了证据合同和打包基础。当前 `main` 还加入了无第三方 Python 依赖的本地摄取与确定性草稿蒸馏，可处理 Markdown、纯文本、JSONL、字幕，以及通过 `pdftotext` 提取的 PDF。实时上游适配器仍只有设计，尚未捆绑实现。
+`0.1.0` 建立了证据合同和打包基础。当前 `main` 还加入了本地摄取、确定性草稿蒸馏、arXiv、INSPIRE、OpenAlex、ORCID 实时学术元数据适配器，以及十种已审查上游产物格式的数据式导入器。仓库不捆绑任何上游可执行代码。
 
 ## 当前内容
 
@@ -127,6 +127,22 @@ everyone-skill release-check profiles/local/alexei-kitaev
 
 `validate` 只判断人物包是否具备可检查的合法结构。`release-check` 则单独对证据、归因、来源、审查状态和已执行评测实行失败关闭。
 
+本地蒸馏前，可以先获取学术元数据，或隔离导入已审查的上游产物：
+
+```bash
+everyone-skill fetch-scholarly \
+  --source inspire \
+  --identifier literature:451647 \
+  --output corpus/maldacena.jsonl
+
+everyone-skill import-upstream \
+  --input path/to/exported-skill \
+  --format scientific-agents \
+  --upstream-url https://github.com/K-Dense-AI/scientific-agents \
+  --upstream-license MIT \
+  --output corpus/scientific-agent.jsonl
+```
+
 为每个评测案例加入已记录的候选输出，以及字面匹配的预期信号和禁止信号后，可以原子执行全部七类评测：
 
 ```bash
@@ -200,7 +216,7 @@ everyone-skill import-reference \
 
 ## 上游项目与致谢
 
-Everyone Is a Skill `0.1.0` 不捆绑第三方源码。仓库只定义适配边界，并感谢为这一设计空间奠定基础的 Distill-Everything、anything2skill、sci-brain、Research Taste Distillation、Nuwa、Distilly、Person Distillation、MirrorMind、Virtual Scientists、K-Dense scientific agents 和 OmniScientist V2。
+Everyone Is a Skill 不捆绑第三方源码。仓库只实现数据式适配边界，并感谢为这一设计空间奠定基础的 Distill-Everything、anything2skill、sci-brain、Research Taste Distillation、Nuwa、Distilly、Person Distillation、Virtual Scientists、K-Dense scientific agents 和 OmniScientist V2。无法核验的 MirrorMind 名称不再被视为集成项。
 
 详见[致谢](ACKNOWLEDGEMENTS.md)、[第三方声明](THIRD_PARTY_NOTICES.md)和锁定的[集成账本](integrations/integrations.lock.yaml)。
 

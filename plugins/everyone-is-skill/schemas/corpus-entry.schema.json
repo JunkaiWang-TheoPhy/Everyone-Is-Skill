@@ -9,6 +9,22 @@
       "type": "string",
       "minLength": 1
     },
+    "adapter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "origin_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
     "subject": {
       "type": "string",
       "minLength": 1
@@ -62,6 +78,12 @@
     },
     "notes": {
       "type": "string"
+    },
+    "rights_basis": {
+      "type": "string"
+    },
+    "instruction_quarantine": {
+      "type": "boolean"
     },
     "coauthor_risk_hint": {
       "type": "string",

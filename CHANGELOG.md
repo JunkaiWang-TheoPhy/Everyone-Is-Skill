@@ -18,6 +18,13 @@ use the version declared in `pyproject.toml` and the Codex plugin manifest.
 - An atomic seven-suite evaluation runner with reproducibility metadata,
   separate method/boundary scores, negative-control failure reasons, and a
   release gate that rejects forged `passed` labels.
+- Live, bounded metadata adapters for arXiv, INSPIRE, OpenAlex, and ORCID, with
+  credential redaction and JSONL handoff to local distillation.
+- Data-only adapters for ten reviewed upstream artifact layouts; runtime
+  instruction surfaces and executable files are never copied, while accepted
+  result data remains quarantined.
+- Removal of the unresolved MirrorMind entry from the supported integration
+  ledger.
 
 ## 0.1.0 - 2026-09-01
 

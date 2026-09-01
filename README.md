@@ -21,7 +21,7 @@ The project distills reusable methods, judgment criteria, evidence habits, work 
 
 > Everyone leaves learnable methods. No person is reducible to a Skill.
 
-Version `0.1.0` established the evidence contract and packaging foundation. Current `main` also includes dependency-free local ingestion and deterministic draft distillation for Markdown, text, JSONL, subtitles, and PDFs through `pdftotext`. Live upstream adapters remain documented but are not bundled yet.
+Version `0.1.0` established the evidence contract and packaging foundation. Current `main` also includes local ingestion, deterministic draft distillation, live scholarly metadata adapters for arXiv, INSPIRE, OpenAlex, and ORCID, and data-only import adapters for ten reviewed upstream artifact layouts. No upstream executable code is bundled.
 
 ## What is included
 
@@ -135,6 +135,23 @@ everyone-skill release-check profiles/local/alexei-kitaev
 `release-check` separately fails closed on evidence, attribution, provenance,
 review, and executed-evaluation gaps.
 
+Fetch scholarly metadata or quarantine a reviewed upstream export before local
+distillation:
+
+```bash
+everyone-skill fetch-scholarly \
+  --source inspire \
+  --identifier literature:451647 \
+  --output corpus/maldacena.jsonl
+
+everyone-skill import-upstream \
+  --input path/to/exported-skill \
+  --format scientific-agents \
+  --upstream-url https://github.com/K-Dense-AI/scientific-agents \
+  --upstream-license MIT \
+  --output corpus/scientific-agent.jsonl
+```
+
 After adding recorded candidate outputs and literal expected/forbidden signals
 to every evaluation case, execute all seven suites atomically:
 
@@ -209,7 +226,7 @@ The repository includes synthetic baseline and forward-pressure specifications u
 
 ## Upstream projects and acknowledgements
 
-Everyone Is a Skill does not vendor third-party source code in `0.1.0`. It provides documented adapter boundaries and credits the projects that made this design space possible, including Distill-Everything, anything2skill, sci-brain, Research Taste Distillation, Nuwa, Distilly, Person Distillation, MirrorMind, Virtual Scientists, K-Dense scientific agents, and OmniScientist V2.
+Everyone Is a Skill does not vendor third-party source code. It provides data-only adapter boundaries and credits the projects that made this design space possible, including Distill-Everything, anything2skill, sci-brain, Research Taste Distillation, Nuwa, Distilly, Person Distillation, Virtual Scientists, K-Dense scientific agents, and OmniScientist V2. The unresolved MirrorMind name is not treated as an integration.
 
 See [Acknowledgements](ACKNOWLEDGEMENTS.md), [Third-Party Notices](THIRD_PARTY_NOTICES.md), and the pinned [integration ledger](integrations/integrations.lock.yaml).
 

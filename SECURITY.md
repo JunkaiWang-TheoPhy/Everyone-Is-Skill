@@ -5,7 +5,9 @@
 Version `0.1.x` includes a dependency-free Python CLI, local corpus ingestion,
 profile-package writer, contract validators, portable Agent Skills, JSON
 schemas, templates, and example profiles. PDF ingestion uses the local
-`pdftotext` executable. Live network ingestion adapters are not released yet.
+`pdftotext` executable. Reviewed network adapters fetch bounded scholarly
+metadata from arXiv, INSPIRE, OpenAlex, and ORCID; upstream project adapters
+only map already-local Markdown/JSON artifacts.
 
 The primary threat surfaces are untrusted retrieved text, unsafe paths,
 malicious imported Skill instructions, accidental publication of private or
@@ -47,3 +49,6 @@ concerns, include the upstream repository name and version or commit if known.
   still unreviewed evidence and cannot promote a profile to release-ready.
 - Directory ingestion rejects symbolic links, omits absolute local paths from
   generated indexes, and validates provider-emitted claims before writing.
+- Network responses are size-limited, credentials are read from named
+  environment variables and never serialized, and imported executable files
+  are ignored rather than activated.

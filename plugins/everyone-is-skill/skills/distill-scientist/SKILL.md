@@ -17,6 +17,11 @@ When the evidence is already available locally and its use is authorized, run
 built-in offline provider produces candidates, never `supported-method` or
 `release-ready` claims; promotion requires evidence review and evaluation.
 
+For stable scholarly identifiers, `everyone-skill fetch-scholarly` can obtain
+bounded public metadata from arXiv, INSPIRE, OpenAlex, or authenticated ORCID
+public records and emit local-ingestion JSONL. Do not treat API identity
+resolution as proof of an individual method.
+
 Read [evidence policy](../../references/evidence-policy.md), [profile contract](../../references/profile-contract.md), [evaluation protocol](../../references/evaluation.md), [claim schema](../../schemas/claim.schema.json), and [profile schema](../../schemas/profile.schema.json).
 
 Reject claims that are only about fame, topic area, or a single coauthored result without attribution support.

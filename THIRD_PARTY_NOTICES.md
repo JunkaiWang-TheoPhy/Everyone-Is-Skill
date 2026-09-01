@@ -5,6 +5,10 @@ scaffold. The projects below are referenced as adapters, inspirations, or
 research references. Their licenses are recorded for attribution and future
 integration work.
 
+The repository also calls the arXiv, INSPIRE, OpenAlex, and ORCID public APIs.
+Those services and returned records remain governed by their own API and
+record-level terms. No response corpus is bundled in this repository.
+
 | Project | Upstream repository | License | Role in Everyone-Is-Skill | Redistribution status |
 | --- | --- | --- | --- | --- |
 | Distill-Everything | `AITCX08/Distill-Everything` | MIT | Local-first ingestion, transcription, cleanup, Markdown, and RAG packaging patterns | Not bundled |
@@ -22,3 +26,6 @@ integration work.
 If upstream code is ever vendored, the copied files must retain their original
 license headers and the notices file must be updated to list the exact files
 and source revisions.
+
+Implemented upstream adapters are original data-layout mappers. They read
+reviewed Markdown/JSON exports and do not copy upstream implementation code.

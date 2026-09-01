@@ -34,8 +34,12 @@ class SourceDocument:
     path: str
     access: str
     rights_basis: str
+    authors: tuple[str, ...] = ()
     published_at: str = ""
     url: str = ""
+    adapter: str = ""
+    canonical_id: str = ""
+    origin_sha256: str = ""
     instruction_quarantine: bool = True
 
     def index_entry(self) -> dict[str, object]:
@@ -51,8 +55,16 @@ class SourceDocument:
         }
         if self.published_at:
             entry["published_at"] = self.published_at
+        if self.authors:
+            entry["authors"] = list(self.authors)
         if self.url:
             entry["url"] = self.url
+        if self.adapter:
+            entry["adapter"] = self.adapter
+        if self.canonical_id:
+            entry["canonical_id"] = self.canonical_id
+        if self.origin_sha256:
+            entry["origin_sha256"] = self.origin_sha256
         return entry
 
 
@@ -143,19 +155,42 @@ def _jsonl_documents(path: Path, access: str) -> list[SourceDocument]:
         if not isinstance(text, str) or not text.strip():
             raise ValueError(f"JSONL entry needs text, content, or transcript at {path}:{line_number}")
         payload = json.dumps(record, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-        source_id, digest = _source_id(payload)
+        generated_source_id, generated_digest = _source_id(payload)
+        declared_source_id = record.get("source_id")
+        source_id = (
+            declared_source_id
+            if isinstance(declared_source_id, str)
+            and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:/-]{2,255}", declared_source_id)
+            else generated_source_id
+        )
+        declared_digest = record.get("sha256")
+        origin_sha256 = (
+            declared_digest
+            if isinstance(declared_digest, str) and re.fullmatch(r"[0-9a-f]{64}", declared_digest)
+            else ""
+        )
+        authors = record.get("authors")
+        normalized_authors = (
+            tuple(author for author in authors if isinstance(author, str) and author.strip())
+            if isinstance(authors, list)
+            else ()
+        )
         documents.append(
             SourceDocument(
                 source_id=source_id,
-                sha256=digest,
+                sha256=generated_digest,
                 title=str(record.get("title") or f"{path.stem} line {line_number}"),
                 source_type=str(record.get("source_type") or "other"),
                 text=text,
                 path=f"{path.name}:{line_number}",
                 access=str(record.get("access") or access),
                 rights_basis=str(record.get("rights_basis") or f"user-declared-{access}"),
+                authors=normalized_authors,
                 published_at=str(record.get("published_at") or ""),
                 url=str(record.get("url") or ""),
+                adapter=str(record.get("adapter") or ""),
+                canonical_id=str(record.get("canonical_id") or ""),
+                origin_sha256=origin_sha256,
             )
         )
     return documents

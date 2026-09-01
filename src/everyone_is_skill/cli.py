@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -54,6 +55,42 @@ def build_parser() -> argparse.ArgumentParser:
     run_evals.add_argument("--provider", required=True)
     run_evals.add_argument("--model", required=True)
     run_evals.add_argument("--reviewer", required=True)
+
+    fetch_scholarly = subparsers.add_parser(
+        "fetch-scholarly", help="fetch reviewed public scholarly metadata into local-ingestion JSONL"
+    )
+    fetch_scholarly.add_argument("--source", required=True, choices=("arxiv", "inspire", "openalex", "orcid"))
+    fetch_scholarly.add_argument("--identifier", required=True)
+    fetch_scholarly.add_argument("--output", required=True, type=Path)
+    fetch_scholarly.add_argument("--token-env", default="EVERYONE_SKILL_ORCID_TOKEN")
+    fetch_scholarly.add_argument("--api-key-env", default="EVERYONE_SKILL_OPENALEX_API_KEY")
+
+    import_upstream = subparsers.add_parser(
+        "import-upstream", help="map reviewed upstream Markdown/JSON artifacts to quarantined JSONL"
+    )
+    import_upstream.add_argument("--input", required=True, type=Path)
+    import_upstream.add_argument(
+        "--format",
+        required=True,
+        choices=(
+            "distill-everything",
+            "anything2skill",
+            "sci-brain",
+            "research-taste-distillation",
+            "nuwa-skill",
+            "distilly",
+            "scientific-agents",
+            "scientific-agent-skills",
+            "virtual-scientists",
+            "omniscientist-v2",
+        ),
+    )
+    import_upstream.add_argument("--upstream-url", required=True)
+    import_upstream.add_argument("--upstream-license", required=True)
+    import_upstream.add_argument(
+        "--access", choices=("public", "authorized", "private-reference"), default="authorized"
+    )
+    import_upstream.add_argument("--output", required=True, type=Path)
 
     validate_repo = subparsers.add_parser("validate-repo", help="validate a source repository checkout")
     validate_repo.add_argument("root", type=Path, nargs="?", default=Path("."))
@@ -130,6 +167,31 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary["status"] == "passed" else 1
+    if args.command == "fetch-scholarly":
+        from .scholarly import fetch_scholarly, write_scholarly_jsonl
+
+        documents = fetch_scholarly(
+            args.source,
+            args.identifier,
+            access_token=os.environ.get(args.token_env),
+            api_key=os.environ.get(args.api_key_env),
+        )
+        output = write_scholarly_jsonl(args.output, documents)
+        print(output)
+        return 0
+    if args.command == "import-upstream":
+        from .upstream import import_upstream_artifacts, write_upstream_jsonl
+
+        records = import_upstream_artifacts(
+            args.input,
+            format_name=args.format,
+            upstream_url=args.upstream_url,
+            upstream_license=args.upstream_license,
+            access=args.access,
+        )
+        output = write_upstream_jsonl(args.output, records)
+        print(output)
+        return 0
     if args.command == "validate-repo":
         from .repository import validate_repository
 
