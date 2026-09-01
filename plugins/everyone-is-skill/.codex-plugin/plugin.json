@@ -1,0 +1,18 @@
+{
+  "name": "everyone-is-skill",
+  "version": "0.1.0",
+  "description": "Evidence-backed skill distillation for people, teams, and source corpora.",
+  "author": {
+    "name": "Everyone-Is-Skill contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Everyone Is a Skill",
+    "shortDescription": "Distill auditable skills from people, teams, and content.",
+    "longDescription": "Routes distillation, update, import, and evaluation workflows for evidence-backed skill packages.",
+    "developerName": "Everyone-Is-Skill contributors",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Distill a person, team, or corpus into an evidence-backed skill package."
+  }
+}

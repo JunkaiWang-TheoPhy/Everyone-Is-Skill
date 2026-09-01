@@ -1,0 +1,28 @@
+{
+  "skill": "import-profile",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Import an external profile package plus its evidence ledger into local manifest, claims, provenance, and eval files without losing upstream traceability.",
+    "available_artifacts": [
+      "external-profile/",
+      "external-evidence/",
+      "external-metadata.json"
+    ],
+    "known_constraints": [
+      "The external schema differs from local contracts.",
+      "Some imported fields have no local equivalent."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Map known fields and mark unresolved gaps explicitly.",
+      "Re-evaluate imported claims under local boundary rules."
+    ],
+    "must_not_do": [
+      "Invent replacements for missing provenance.",
+      "Merge schema differences silently."
+    ]
+  }
+}

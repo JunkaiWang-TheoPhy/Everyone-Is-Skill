@@ -1,0 +1,29 @@
+{
+  "skill": "evaluate-profile",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Evaluate a nearly complete profile package and decide whether it is release-ready after a major revision.",
+    "available_artifacts": [
+      "profile/SKILL.md",
+      "profile/manifest.json",
+      "profile/evidence/claims.jsonl",
+      "profile/evals/"
+    ],
+    "known_constraints": [
+      "One cluster of claims may be field-generic.",
+      "Counterevidence exists and must remain visible."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Run discriminative and abstention checks, not just schema checks.",
+      "Downgrade or block weak claim clusters."
+    ],
+    "must_not_do": [
+      "Hide conflicting evidence to preserve a clean narrative.",
+      "Treat imported confidence as sufficient proof."
+    ]
+  }
+}

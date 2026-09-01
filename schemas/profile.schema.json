@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://everyone-is-skill.dev/schemas/profile.schema.json",
+  "title": "Profile Manifest",
+  "description": "Manifest schema for portable profiles. Required fields mirror validate_profile_manifest() exactly; all governance enrichment is optional.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "slug",
+    "display_name",
+    "target_type",
+    "intended_use",
+    "identity_anchors",
+    "boundaries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "scientist",
+        "expert",
+        "creator",
+        "team",
+        "self",
+        "colleague"
+      ]
+    },
+    "intended_use": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity_anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "value"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "boundaries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "evidence-complete",
+        "behavior-tested",
+        "peer-reviewed",
+        "release-ready",
+        "deprecated"
+      ]
+    },
+    "method_scope": {
+      "type": "string"
+    },
+    "evaluation_focus": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "counterevidence_required": {
+      "type": "boolean"
+    },
+    "coauthor_policy": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

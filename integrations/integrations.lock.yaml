@@ -1,0 +1,127 @@
+schema_version: 1
+generated_at: "2026-09-01T00:00:00+08:00"
+policy:
+  vendor_code: false
+  preserve_upstream_notices: true
+  unresolved_items_allowed: true
+sources:
+  - id: distill-everything
+    display_name: Distill-Everything
+    repository: AITCX08/Distill-Everything
+    url: https://github.com/AITCX08/Distill-Everything
+    license: MIT
+    license_status: declared
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: local-first ingestion, transcription, cleanup, Markdown output, and RAG packaging
+    bundled: false
+  - id: anything2skill
+    display_name: anything2skill
+    repository: Nouischen/anything2skill
+    url: https://github.com/Nouischen/anything2skill
+    license: MIT
+    license_status: declared
+    classification: inspiration
+    review_date: 2026-09-01
+    contribution: value pre-check, anti-bloat fusion, and review-card activation
+    bundled: false
+  - id: sci-brain
+    display_name: sci-brain
+    repository: QuantumBFS/sci-brain
+    url: https://github.com/QuantumBFS/sci-brain
+    license: MIT
+    license_status: declared
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: scientist-oriented ingestion around papers, PDFs, Zotero, and research workflows
+    bundled: false
+  - id: research-taste-distillation
+    display_name: research-taste-distillation
+    repository: Jingqi-Xu/research-taste-distillation
+    url: https://github.com/Jingqi-Xu/research-taste-distillation
+    license: MIT
+    license_status: declared
+    classification: inspiration
+    review_date: 2026-09-01
+    contribution: research philosophy extraction and critique flow
+    bundled: false
+  - id: nuwa-skill
+    display_name: nuwa-skill
+    repository: alchaincyf/nuwa-skill
+    url: https://github.com/alchaincyf/nuwa-skill
+    license: MIT
+    license_status: declared
+    classification: inspiration
+    review_date: 2026-09-01
+    contribution: person distillation, mental models, decision heuristics, and expression DNA extraction
+    bundled: false
+  - id: distilly
+    display_name: distilly
+    repository: titanwings/distilly
+    url: https://github.com/titanwings/distilly
+    license: MIT
+    license_status: declared
+    classification: inspiration
+    review_date: 2026-09-01
+    contribution: capability/persona split and reusable skill generation
+    bundled: false
+  - id: person-distillation-foundations
+    display_name: person-distillation-foundations
+    repository: person-distillation-foundations/person-distillation-foundations.github.io
+    url: https://github.com/person-distillation-foundations/person-distillation-foundations.github.io
+    license: null
+    license_status: not_declared
+    classification: reference-only
+    review_date: 2026-09-01
+    contribution: survey vocabulary and framing for person distillation
+    bundled: false
+  - id: virtual-scientists
+    display_name: Virtual Scientists
+    repository: InternScience/Virtual-Scientists
+    url: https://github.com/InternScience/Virtual-Scientists
+    license: Apache-2.0
+    license_status: declared
+    classification: inspiration
+    review_date: 2026-09-01
+    contribution: multi-agent scientific system design and team orchestration
+    bundled: false
+  - id: scientific-agents
+    display_name: scientific-agents
+    repository: K-Dense-AI/scientific-agents
+    url: https://github.com/K-Dense-AI/scientific-agents
+    license: MIT
+    license_status: declared
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: expert-thinking AGENTS.md profiles for scientific reasoning
+    bundled: false
+  - id: scientific-agent-skills
+    display_name: scientific-agent-skills
+    repository: K-Dense-AI/scientific-agent-skills
+    url: https://github.com/K-Dense-AI/scientific-agent-skills
+    license: MIT
+    license_status: declared
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: skill library structure and scientific tool catalog patterns
+    bundled: false
+  - id: omniscientist-v2
+    display_name: OmniScientist V2
+    repository: tsinghua-fib-lab/OmniScientist-V2
+    url: https://github.com/tsinghua-fib-lab/OmniScientist-V2
+    license: Apache-2.0
+    license_status: declared
+    classification: adapter
+    review_date: 2026-09-01
+    contribution: provenance, workflow, and co-evolving scientist ecosystem structure
+    bundled: false
+  - id: mirrormind
+    display_name: MirrorMind
+    repository: null
+    url: null
+    license: null
+    license_status: unresolved
+    classification: unresolved
+    review_date: 2026-09-01
+    contribution: listed during review, but the canonical upstream repository was not confirmed
+    bundled: false

@@ -1,0 +1,29 @@
+{
+  "skill": "distill-scientist",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Build a scientist profile from eight papers, two lectures, one interview, and citation-network notes while distinguishing supported methods from field-generic habits.",
+    "available_artifacts": [
+      "papers/",
+      "talks/",
+      "interview.md",
+      "lineage.json"
+    ],
+    "known_constraints": [
+      "Multiple coauthors appear across the corpus.",
+      "The final skill must transfer beyond the original field."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Separate source facts, observed patterns, supported methods, and counterevidence.",
+      "Flag coauthor attribution risk where needed."
+    ],
+    "must_not_do": [
+      "Collapse all papers into one unqualified style claim.",
+      "Ignore transfer and boundary tests."
+    ]
+  }
+}

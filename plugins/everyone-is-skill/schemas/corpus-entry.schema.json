@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://everyone-is-skill.dev/schemas/corpus-entry.schema.json",
+  "title": "Corpus Entry",
+  "description": "Advisory schema for one line in evidence/corpus-index.jsonl. The current CLI does not validate this shape, so all fields stay optional and additive.",
+  "type": "object",
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "paper",
+        "preprint",
+        "talk",
+        "interview",
+        "lecture",
+        "book",
+        "blog",
+        "code",
+        "review",
+        "notes",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "published_at": {
+      "type": "string"
+    },
+    "time_window": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "public",
+        "authorized",
+        "private-reference",
+        "unknown"
+      ]
+    },
+    "relevance": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "coauthor_risk_hint": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "low",
+        "moderate",
+        "high"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

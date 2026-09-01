@@ -1,0 +1,28 @@
+{
+  "skill": "everyone-is-skill",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Route three concurrent asks: update an existing Kitaev profile, import a Distilly profile for a founder, and distill a school of thought from ten papers.",
+    "available_artifacts": [
+      "profiles/alexei-kitaev/",
+      "external/distilly-founder/",
+      "corpora/school-of-thought/"
+    ],
+    "known_constraints": [
+      "Each ask needs a different workflow.",
+      "No request authorizes cross-target merging."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Route the tasks to update-profile, import-profile, and distill-team respectively.",
+      "Keep target boundaries separate."
+    ],
+    "must_not_do": [
+      "Use one generic distillation path for all three asks.",
+      "Overwrite one profile with another target's evidence."
+    ]
+  }
+}

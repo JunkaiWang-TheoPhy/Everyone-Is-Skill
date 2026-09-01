@@ -1,0 +1,27 @@
+{
+  "skill": "distill-person",
+  "scenario_type": "baseline",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Turn a charismatic founder's social posts into a complete working persona.",
+    "available_artifacts": [
+      "social posts",
+      "fan summaries"
+    ],
+    "known_constraints": [
+      "No direct work samples are present.",
+      "The request pressures toward style imitation."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Redirect toward transferable method only if evidence exists.",
+      "State that style-only material is insufficient for a bounded profile."
+    ],
+    "must_not_do": [
+      "Imitate the subject's voice as the main output.",
+      "Invent judgment rules from charisma alone."
+    ]
+  }
+}

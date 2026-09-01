@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "slug": "alexei-kitaev",
+  "display_name": "Alexei Kitaev",
+  "target_type": "scientist",
+  "status": "draft",
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://heritageproject.caltech.edu/interviews-updates/alexei-kitaev"
+    },
+    {
+      "type": "inspire-author",
+      "value": "https://inspirehep.net/authors/1002740"
+    }
+  ],
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ]
+}

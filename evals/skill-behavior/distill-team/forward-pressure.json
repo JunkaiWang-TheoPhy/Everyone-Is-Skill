@@ -1,0 +1,29 @@
+{
+  "skill": "distill-team",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Distill a long-running research school across founding papers, student theses, group notes, and later split factions.",
+    "available_artifacts": [
+      "founding-papers/",
+      "theses/",
+      "group-notes/",
+      "timeline.csv"
+    ],
+    "known_constraints": [
+      "The school changes over time.",
+      "Not all members agree on the same method."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Model phases, common practices, and dissent explicitly.",
+      "Separate school-level norms from member-specific methods."
+    ],
+    "must_not_do": [
+      "Flatten historical change into one timeless doctrine.",
+      "Attribute every member result to the collective."
+    ]
+  }
+}

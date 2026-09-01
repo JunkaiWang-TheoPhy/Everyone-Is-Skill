@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "slug": "example-scientist",
+  "display_name": "Example Scientist",
+  "target_type": "scientist",
+  "status": "draft",
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "identity_anchors": [
+    {
+      "type": "placeholder",
+      "value": "replace-with-verified-identity-anchor"
+    }
+  ],
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ]
+}

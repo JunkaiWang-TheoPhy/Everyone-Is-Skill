@@ -1,0 +1,10 @@
+Everyone-Is-Skill
+
+Copyright 2026 Junkai Wang and Everyone-Is-Skill contributors
+
+This repository is distributed under the Apache License 2.0.
+
+Version 0.1.0 does not vendor third-party source code.
+External projects referenced by name in this repository are documented as
+inspiration or adapter targets in docs/integrations.md and
+THIRD_PARTY_NOTICES.md.

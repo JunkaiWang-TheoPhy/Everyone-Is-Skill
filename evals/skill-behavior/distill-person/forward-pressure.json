@@ -1,0 +1,29 @@
+{
+  "skill": "distill-person",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Distill an operator from decision memos, interviews, product reviews, and postmortems into an auditable skill with optional communication notes.",
+    "available_artifacts": [
+      "decision-memos/",
+      "interviews/",
+      "product-reviews/",
+      "postmortems/"
+    ],
+    "known_constraints": [
+      "The user wants transferable playbooks, not biography.",
+      "Communication style must stay secondary."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Extract triggers, workflows, checks, and failure modes.",
+      "Keep persona text subordinate to method."
+    ],
+    "must_not_do": [
+      "Center the profile on admiration or branding language.",
+      "Treat every anecdote as a stable personal rule."
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "skill": "distill-content",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Distill a book, lecture series, and workshop transcript into a reusable playbook while labeling corpus-specific advice.",
+    "available_artifacts": [
+      "book.pdf",
+      "lecture-series/",
+      "workshop-transcript.md"
+    ],
+    "known_constraints": [
+      "The same author appears across the corpus, but identity distillation is not requested.",
+      "Transferability matters more than biography."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Extract repeatable heuristics and checks.",
+      "Label corpus-specific versus transferable guidance."
+    ],
+    "must_not_do": [
+      "Convert the corpus into an unsupported person model.",
+      "Hide uncertainty about source boundaries."
+    ]
+  }
+}

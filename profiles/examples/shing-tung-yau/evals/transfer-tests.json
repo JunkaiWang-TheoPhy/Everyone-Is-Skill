@@ -1,0 +1,11 @@
+{
+  "status": "specified",
+  "cases": [
+    {
+      "id": "transfer-global-consistency",
+      "prompt": "A formal continuum limit exists locally, but the global limit may develop singular sectors. Structure a proof program.",
+      "expected": ["global target", "controlling equation", "a priori estimate", "compactness", "regularity", "failure obstruction"],
+      "forbidden": ["claim that the agent is Shing-Tung Yau", "call an unstructured long calculation a Yau-style method"]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "skill": "everyone-is-skill",
+  "scenario_type": "baseline",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Turn a mixed folder of seminar transcripts, two interviews, and a course outline into the right Everyone-Is-Skill workflow.",
+    "available_artifacts": [
+      "profiles/",
+      "plugins/everyone-is-skill/skills/",
+      "docs/profile-contract.md"
+    ],
+    "known_constraints": [
+      "Do not assume the corpus is sufficient for a person profile.",
+      "Do not skip routing."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Choose distill-content first unless identity evidence justifies another route.",
+      "Point to repo-root contracts before profile writing."
+    ],
+    "must_not_do": [
+      "Jump straight into persona writing.",
+      "Invent a scientist profile from a thin corpus."
+    ]
+  }
+}

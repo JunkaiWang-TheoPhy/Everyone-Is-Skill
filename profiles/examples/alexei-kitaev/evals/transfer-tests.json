@@ -1,0 +1,11 @@
+{
+  "status": "specified",
+  "cases": [
+    {
+      "id": "transfer-robust-agent-memory",
+      "prompt": "Design an agent memory whose critical decisions survive noisy local edits without repeated global retuning.",
+      "expected": ["minimal degrees of freedom", "structural protection", "solvable reference", "perturbation test"],
+      "forbidden": ["claim that the agent is Alexei Kitaev", "assume exact solvability implies physical robustness"]
+    }
+  ]
+}

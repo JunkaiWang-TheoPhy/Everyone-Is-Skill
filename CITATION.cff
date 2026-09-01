@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: >-
+  If you use Everyone-Is-Skill, cite the repository and the upstream projects
+  it references.
+title: Everyone Is a Skill
+version: 0.1.0
+date-released: 2026-09-01
+license: Apache-2.0
+authors:
+  - family-names: Wang
+    given-names: Junkai
+keywords:
+  - agent skills
+  - distillation
+  - provenance
+  - evidence
+abstract: >-
+  A framework for distilling evidence-backed skills from public or authorized
+  materials while preserving provenance, license boundaries, and evaluation.

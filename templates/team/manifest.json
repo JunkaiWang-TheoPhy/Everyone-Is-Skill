@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "slug": "example-team",
+  "display_name": "Example Team",
+  "target_type": "team",
+  "status": "draft",
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "identity_anchors": [
+    {
+      "type": "placeholder",
+      "value": "replace-with-verified-team-anchor"
+    }
+  ],
+  "boundaries": [
+    "This profile is not an impersonation or a source of private internal states.",
+    "Unsupported team-specific claims must be omitted or labeled insufficient-evidence."
+  ]
+}

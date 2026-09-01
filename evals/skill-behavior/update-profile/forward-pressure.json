@@ -1,0 +1,29 @@
+{
+  "skill": "update-profile",
+  "scenario_type": "forward-pressure",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Merge new interviews, corrected authorship data, and transfer-test failures into an existing profile package.",
+    "available_artifacts": [
+      "existing-profile/",
+      "new-interviews/",
+      "authorship-corrections.csv",
+      "transfer-failures.json"
+    ],
+    "known_constraints": [
+      "Some old claim IDs can remain stable and some cannot.",
+      "Evaluation files must stay in sync with the textual profile."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Apply claim-level revisions instead of full-package overwrite.",
+      "Update provenance, counterevidence, and eval scenarios together."
+    ],
+    "must_not_do": [
+      "Leave stale evals after changing the profile.",
+      "Widen the target without a fresh identity check."
+    ]
+  }
+}

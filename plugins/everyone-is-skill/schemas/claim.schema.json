@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://everyone-is-skill.dev/schemas/claim.schema.json",
+  "title": "Evidence Claim",
+  "description": "Machine-readable shape for one claim ledger entry. Required fields mirror src/everyone_is_skill/contracts.py exactly; richer fields remain optional.",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "subject",
+    "facet",
+    "claim",
+    "status",
+    "confidence",
+    "source_ids",
+    "attribution_strength",
+    "coauthor_risk",
+    "time_window"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "facet": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "source-fact",
+        "observed-pattern",
+        "field-generic",
+        "person-specific-candidate",
+        "supported-method",
+        "contradicted",
+        "insufficient-evidence"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "attribution_strength": {
+      "type": "string",
+      "enum": [
+        "weak",
+        "moderate",
+        "strong"
+      ]
+    },
+    "coauthor_risk": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "low",
+        "moderate",
+        "high"
+      ]
+    },
+    "time_window": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transfer_scope": {
+      "type": "string"
+    },
+    "counterevidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "method_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "additionalProperties": true
+}

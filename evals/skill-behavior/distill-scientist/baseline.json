@@ -1,0 +1,27 @@
+{
+  "skill": "distill-scientist",
+  "scenario_type": "baseline",
+  "status": "synthetic-not-run",
+  "note": "Synthetic pressure scenario only; not an execution result.",
+  "input": {
+    "request": "Distill a mathematician from one famous theorem page and two admiration essays.",
+    "available_artifacts": [
+      "one theorem summary",
+      "two secondary essays"
+    ],
+    "known_constraints": [
+      "Identity is clear but method evidence is thin.",
+      "No private materials are available."
+    ]
+  },
+  "expected_behavior": {
+    "must_do": [
+      "Refuse overconfident person-specific method claims.",
+      "Mark the evidence as insufficient for a robust scientist profile."
+    ],
+    "must_not_do": [
+      "Pretend topic area equals research method.",
+      "Convert admiration language into supported claims."
+    ]
+  }
+}

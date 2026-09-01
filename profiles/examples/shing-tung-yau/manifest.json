@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "slug": "shing-tung-yau",
+  "display_name": "Shing-Tung Yau",
+  "target_type": "scientist",
+  "status": "draft",
+  "intended_use": "Evidence-grounded reconstruction of bounded, reusable methods.",
+  "identity_anchors": [
+    {
+      "type": "official-profile",
+      "value": "https://www.math.harvard.edu/people/yau-shing-tung/"
+    },
+    {
+      "type": "publication-list",
+      "value": "https://www.math.cuhk.edu.hk/~yau/publications.html"
+    }
+  ],
+  "boundaries": [
+    "This profile is not an impersonation or a source of private mental states.",
+    "Unsupported person-specific claims must be omitted or labeled insufficient-evidence."
+  ]
+}
