@@ -156,6 +156,39 @@ class CliTests(unittest.TestCase):
             self.assertIn("status must be release-ready", checked.stderr)
             self.assertIn("evidence/claims.jsonl must contain at least one claim", checked.stderr)
 
+    def test_distill_local_builds_a_structurally_valid_draft(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "notes.md"
+            source.write_text("METHOD: Start from a controlled limiting case.\n", encoding="utf-8")
+            result = self.run_cli(
+                "distill-local",
+                "--input",
+                str(source),
+                "--output",
+                tmp,
+                "--slug",
+                "example-scientist",
+                "--name",
+                "Example Scientist",
+                "--kind",
+                "scientist",
+                "--anchor",
+                "homepage=https://example.test",
+                "--access",
+                "authorized",
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            profile = Path(tmp) / "example-scientist"
+            self.assertTrue((profile / "evidence" / "claims.jsonl").is_file())
+            self.assertEqual(self.run_cli("validate", str(profile)).returncode, 0)
+
+    def test_capabilities_reports_pdf_prerequisite(self):
+        result = self.run_cli("capabilities")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        capabilities = json.loads(result.stdout)
+        self.assertEqual(capabilities["pdf"]["requires"], "pdftotext (Poppler)")
+        self.assertIsInstance(capabilities["pdf"]["available"], bool)
+
     def test_import_reference_records_upstream_without_copying_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli(

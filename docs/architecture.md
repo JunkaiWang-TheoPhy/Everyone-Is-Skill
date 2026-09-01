@@ -6,11 +6,11 @@ into an impersonation target.
 
 ## Design center
 
-The repository keeps the runtime contract intentionally small so the current
-CLI can scaffold and validate inert profile packages with no external
-dependencies. Richer semantics live in documentation, JSON Schemas, and
-templates. This lets us expand evidence and evaluation guidance without
-breaking `src/everyone_is_skill/contracts.py`, `packaging.py`, or `cli.py`.
+The repository keeps the runtime contract intentionally small. The CLI can
+scaffold and validate inert packages, ingest authorized local corpora, and
+produce deterministic drafts without Python dependencies outside the standard
+library. PDF text extraction delegates to `pdftotext`. Richer semantics live in
+documentation, JSON Schemas, and templates.
 
 The method-first architecture is:
 
@@ -23,6 +23,26 @@ The method-first architecture is:
 6. Evaluate transfer, peer discrimination, temporal stability, and boundary
    abstention.
 7. Package the result as a portable profile directory.
+
+## Local ingestion boundary
+
+`everyone-skill distill-local` accepts Markdown, text, JSONL, SRT, VTT, and PDF
+inputs. It hashes and deduplicates artifacts, records declared access and
+rights metadata, strips transcript timing syntax, and writes a corpus index
+without copying raw source text into the public package.
+
+Directory ingestion rejects symbolic links, and public packages record only a
+source label rather than the absolute local path. PDF support is optional and
+gated on Poppler's `pdftotext`; `everyone-skill capabilities` reports whether
+that prerequisite is available before a run.
+
+Every source is marked `instruction_quarantine: true`. Retrieved instructions
+are data, never control flow. The built-in offline provider recognizes only
+explicit `METHOD:` and `COUNTEREVIDENCE:` annotations; unmarked prose cannot
+silently become a person-specific claim. `DistillationProvider` is the stable
+boundary for future reviewed providers. Provider output is revalidated against
+the claim contract and source index, and draft providers cannot emit
+`supported-method` or strong-attribution records.
 
 ## Runtime contract
 
@@ -112,8 +132,8 @@ The current CLI requires these files to exist for `everyone-skill validate`:
 
 The CLI validates manifest and claim contracts, parses corpus entries, checks
 lineage `nodes`/`edges`, and requires each evaluation file to expose a string
-status plus a cases array. Rich release semantics remain governed by policy and
-the versioned JSON Schemas.
+status plus a cases array. `release-check` then enforces the stronger
+publication contract described in the profile and evaluation documents.
 
 ## Separation of responsibilities
 
@@ -123,6 +143,10 @@ the versioned JSON Schemas.
 - `templates/` provides valid inert scaffolds for new profile kinds.
 - `src/everyone_is_skill/contracts.py` remains the compatibility boundary for
   current automation.
+- `src/everyone_is_skill/ingestion.py` normalizes local evidence as quarantined
+  data.
+- `src/everyone_is_skill/distillation.py` owns the provider-neutral draft
+  pipeline.
 
 ## Non-goals
 

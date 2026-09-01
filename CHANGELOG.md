@@ -11,6 +11,10 @@ use the version declared in `pyproject.toml` and the Codex plugin manifest.
 - A fail-closed `release-check` command distinct from structural validation.
 - Release gates for evidence resolution, attribution risk, counterevidence,
   reviewed imports, executed evaluations, and matching profile provenance.
+- Local Markdown, text, JSONL, transcript, and PDF ingestion with deterministic
+  source identities, deduplication, rights metadata, and instruction quarantine.
+- A provider-neutral distillation boundary and deterministic offline provider
+  for complete, structurally valid draft packages.
 
 ## 0.1.0 - 2026-09-01
 

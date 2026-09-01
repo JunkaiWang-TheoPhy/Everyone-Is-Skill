@@ -21,7 +21,7 @@ The project distills reusable methods, judgment criteria, evidence habits, work 
 
 > Everyone leaves learnable methods. No person is reducible to a Skill.
 
-Version `0.1.0` is an evidence-contract and packaging foundation. It ships a dependency-free profile validator, portable Skill workflows, JSON schemas, scientist and team templates, synthetic behavior-test specifications, and two evidence-grounded scientist examples. Live upstream ingestion adapters are documented but not bundled yet.
+Version `0.1.0` established the evidence contract and packaging foundation. Current `main` also includes dependency-free local ingestion and deterministic draft distillation for Markdown, text, JSONL, subtitles, and PDFs through `pdftotext`. Live upstream adapters remain documented but are not bundled yet.
 
 ## What is included
 
@@ -86,6 +86,15 @@ source .venv/bin/activate
 python3 -m pip install -e .
 ```
 
+Markdown, text, JSONL, SRT, and VTT ingestion needs no additional runtime.
+PDF ingestion is explicitly gated on Poppler's `pdftotext` executable (`brew
+install poppler` on macOS or `apt install poppler-utils` on Debian/Ubuntu).
+Check the current machine before a run:
+
+```bash
+everyone-skill capabilities
+```
+
 Create an inert draft profile:
 
 ```bash
@@ -96,11 +105,32 @@ everyone-skill new-profile \
   --kind scientist
 ```
 
+Or turn a public or authorized local corpus into a complete, auditable draft in
+one command. The offline provider only treats explicit `METHOD:` and
+`COUNTEREVIDENCE:` lines as claim candidates; all other source text remains
+quarantined data.
+
+```bash
+everyone-skill distill-local \
+  --input path/to/corpus \
+  --output profiles/local \
+  --slug example-scientist \
+  --name "Example Scientist" \
+  --kind scientist \
+  --anchor orcid=0000-0002-1825-0097 \
+  --access authorized
+```
+
 Add at least one stable identity anchor to `manifest.json`, add only grounded claims to `evidence/claims.jsonl`, then validate:
 
 ```bash
 everyone-skill validate profiles/local/alexei-kitaev
+everyone-skill release-check profiles/local/alexei-kitaev
 ```
+
+`validate` checks whether a package is structurally inspectable.
+`release-check` separately fails closed on evidence, attribution, provenance,
+review, and executed-evaluation gaps.
 
 Reference an upstream profile without copying or relicensing its content:
 

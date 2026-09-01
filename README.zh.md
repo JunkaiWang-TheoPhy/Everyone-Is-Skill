@@ -21,7 +21,7 @@ Everyone Is a Skill 将人物、团队、研究学派、创作者或一组作品
 
 > 每个人都会留下可学习的方法，但没有任何人可以被一个 Skill 完整替代。
 
-`0.1.0` 是证据合同和打包基础版本，包含无第三方依赖的人物包验证器、便携 Skill 工作流、JSON Schema、科学家与团队模板、合成行为测试规范，以及两个证据化科学家方法样例。实时上游摄取适配器已经完成设计，但尚未捆绑实现。
+`0.1.0` 建立了证据合同和打包基础。当前 `main` 还加入了无第三方 Python 依赖的本地摄取与确定性草稿蒸馏，可处理 Markdown、纯文本、JSONL、字幕，以及通过 `pdftotext` 提取的 PDF。实时上游适配器仍只有设计，尚未捆绑实现。
 
 ## 当前内容
 
@@ -86,6 +86,12 @@ source .venv/bin/activate
 python3 -m pip install -e .
 ```
 
+Markdown、纯文本、JSONL、SRT 和 VTT 摄取不需要额外运行时。PDF 摄取会明确检查 Poppler 的 `pdftotext` 可执行文件，在 macOS 上可用 `brew install poppler` 安装，在 Debian/Ubuntu 上可用 `apt install poppler-utils` 安装。运行前可检查本机能力：
+
+```bash
+everyone-skill capabilities
+```
+
 创建一个惰性的草稿人物包：
 
 ```bash
@@ -96,11 +102,27 @@ everyone-skill new-profile \
   --kind scientist
 ```
 
+也可以用一条命令，把公共或已授权的本地语料变成完整、可审计的草稿。离线提供器只把显式标记为 `METHOD:` 和 `COUNTEREVIDENCE:` 的行当作候选主张，其余来源文本始终按隔离数据处理。
+
+```bash
+everyone-skill distill-local \
+  --input path/to/corpus \
+  --output profiles/local \
+  --slug example-scientist \
+  --name "Example Scientist" \
+  --kind scientist \
+  --anchor orcid=0000-0002-1825-0097 \
+  --access authorized
+```
+
 在 `manifest.json` 中加入至少一个稳定身份锚点，只向 `evidence/claims.jsonl` 写入有来源的主张，然后验证：
 
 ```bash
 everyone-skill validate profiles/local/alexei-kitaev
+everyone-skill release-check profiles/local/alexei-kitaev
 ```
+
+`validate` 只判断人物包是否具备可检查的合法结构。`release-check` 则单独对证据、归因、来源、审查状态和已执行评测实行失败关闭。
 
 在不复制或重新授权上游内容的情况下记录一个外部画像：
 

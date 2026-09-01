@@ -2,9 +2,10 @@
 
 ## Supported scope
 
-Version `0.1.x` includes a dependency-free Python CLI, profile-package writer,
-contract validators, portable Agent Skills, JSON schemas, templates, and
-example profiles. Live network ingestion adapters are not released yet.
+Version `0.1.x` includes a dependency-free Python CLI, local corpus ingestion,
+profile-package writer, contract validators, portable Agent Skills, JSON
+schemas, templates, and example profiles. PDF ingestion uses the local
+`pdftotext` executable. Live network ingestion adapters are not released yet.
 
 The primary threat surfaces are untrusted retrieved text, unsafe paths,
 malicious imported Skill instructions, accidental publication of private or
@@ -42,3 +43,7 @@ concerns, include the upstream repository name and version or commit if known.
 - Keep raw private and copyrighted corpora under ignored workspace storage.
 - Review output paths before writes and do not follow untrusted symlinks.
 - A source URL or declared license is metadata, not proof of trust.
+- The offline provider recognizes explicit annotations; annotation text is
+  still unreviewed evidence and cannot promote a profile to release-ready.
+- Directory ingestion rejects symbolic links, omits absolute local paths from
+  generated indexes, and validates provider-emitted claims before writing.
