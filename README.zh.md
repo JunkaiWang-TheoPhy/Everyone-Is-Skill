@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="可见性：私有" src="https://img.shields.io/badge/visibility-private-6f42c1">
   <img alt="许可证：Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue">
-  <img alt="版本：0.1.0" src="https://img.shields.io/badge/version-0.1.0-2ea44f">
+  <img alt="版本：1.0.0" src="https://img.shields.io/badge/version-1.0.0-2ea44f">
   <img alt="Python：3.11+" src="https://img.shields.io/badge/python-3.11%2B-3776ab">
 </p>
 
@@ -21,7 +21,7 @@ Everyone Is a Skill 将人物、团队、研究学派、创作者或一组作品
 
 > 每个人都会留下可学习的方法，但没有任何人可以被一个 Skill 完整替代。
 
-`0.1.0` 建立了证据合同和打包基础。当前 `main` 还加入了本地摄取、确定性草稿蒸馏、arXiv、INSPIRE、OpenAlex、ORCID 实时学术元数据适配器，以及十种已审查上游产物格式的数据式导入器。仓库不捆绑任何上游可执行代码。
+`1.0.0` 包含证据合同、本地摄取、确定性草稿蒸馏、arXiv、INSPIRE、OpenAlex、ORCID 实时学术元数据适配器、十种已审查上游产物格式的数据式导入器、可执行评测、版本化回滚和跨运行时导出。仓库不捆绑任何上游可执行代码。
 
 ## 当前内容
 
@@ -99,6 +99,13 @@ cd Everyone-Is-Skill
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -e .
+```
+
+从带标签的仓库 marketplace 安装 Codex 插件：
+
+```bash
+codex plugin marketplace add JunkaiWang-TheoPhy/Everyone-Is-Skill --ref v1.0.0
+codex plugin add everyone-is-skill@everyone-is-skill
 ```
 
 Markdown、纯文本、JSONL、SRT 和 VTT 摄取不需要额外运行时。PDF 摄取会明确检查 Poppler 的 `pdftotext` 可执行文件，在 macOS 上可用 `brew install poppler` 安装，在 Debian/Ubuntu 上可用 `apt install poppler-utils` 安装。运行前可检查本机能力：

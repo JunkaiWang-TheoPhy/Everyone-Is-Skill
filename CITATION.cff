@@ -3,8 +3,8 @@ message: >-
   If you use Everyone-Is-Skill, cite the repository and the upstream projects
   it references.
 title: Everyone Is a Skill
-version: 0.1.0
-date-released: 2026-09-01
+version: 1.0.0
+date-released: 2026-09-02
 license: Apache-2.0
 authors:
   - family-names: Wang

@@ -22,6 +22,7 @@ class RepositoryContractTests(unittest.TestCase):
             "CHANGELOG.md",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
+        self.assertTrue((ROOT / ".agents/plugins/marketplace.json").is_file())
 
     def test_all_json_files_parse(self):
         for path in ROOT.rglob("*.json"):

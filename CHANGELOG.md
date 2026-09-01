@@ -6,6 +6,10 @@ use the version declared in `pyproject.toml` and the Codex plugin manifest.
 
 ## Unreleased
 
+No unreleased changes.
+
+## 1.0.0 - 2026-09-02
+
 ### Added
 
 - A fail-closed `release-check` command distinct from structural validation.

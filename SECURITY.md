@@ -2,7 +2,7 @@
 
 ## Supported scope
 
-Version `0.1.x` includes a dependency-free Python CLI, local corpus ingestion,
+Version `1.0.x` includes a dependency-free Python CLI, local corpus ingestion,
 profile-package writer, contract validators, portable Agent Skills, JSON
 schemas, templates, and example profiles. PDF ingestion uses the local
 `pdftotext` executable. Reviewed network adapters fetch bounded scholarly

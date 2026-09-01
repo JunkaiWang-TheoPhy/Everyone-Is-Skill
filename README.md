@@ -7,7 +7,7 @@
 <p align="center">
   <img alt="Visibility: Private" src="https://img.shields.io/badge/visibility-private-6f42c1">
   <img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue">
-  <img alt="Version: 0.1.0" src="https://img.shields.io/badge/version-0.1.0-2ea44f">
+  <img alt="Version: 1.0.0" src="https://img.shields.io/badge/version-1.0.0-2ea44f">
   <img alt="Python: 3.11+" src="https://img.shields.io/badge/python-3.11%2B-3776ab">
 </p>
 
@@ -21,7 +21,7 @@ The project distills reusable methods, judgment criteria, evidence habits, work 
 
 > Everyone leaves learnable methods. No person is reducible to a Skill.
 
-Version `0.1.0` established the evidence contract and packaging foundation. Current `main` also includes local ingestion, deterministic draft distillation, live scholarly metadata adapters for arXiv, INSPIRE, OpenAlex, and ORCID, and data-only import adapters for ten reviewed upstream artifact layouts. No upstream executable code is bundled.
+Version `1.0.0` provides the evidence contract, local ingestion, deterministic draft distillation, live scholarly metadata adapters for arXiv, INSPIRE, OpenAlex, and ORCID, data-only import adapters for ten reviewed upstream artifact layouts, executable evaluation, versioned rollback, and cross-runtime export. No upstream executable code is bundled.
 
 ## What is included
 
@@ -102,6 +102,13 @@ cd Everyone-Is-Skill
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -e .
+```
+
+Install the Codex plugin from the tagged repository marketplace:
+
+```bash
+codex plugin marketplace add JunkaiWang-TheoPhy/Everyone-Is-Skill --ref v1.0.0
+codex plugin add everyone-is-skill@everyone-is-skill
 ```
 
 Markdown, text, JSONL, SRT, and VTT ingestion needs no additional runtime.

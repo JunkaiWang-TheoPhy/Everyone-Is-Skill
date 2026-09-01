@@ -1,0 +1,20 @@
+{
+  "name": "everyone-is-skill",
+  "interface": {
+    "displayName": "Everyone Is Skill"
+  },
+  "plugins": [
+    {
+      "name": "everyone-is-skill",
+      "source": {
+        "source": "local",
+        "path": "./plugins/everyone-is-skill"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}

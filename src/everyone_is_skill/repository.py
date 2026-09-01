@@ -121,6 +121,26 @@ def validate_repository(root: Path) -> list[str]:
         except json.JSONDecodeError as exc:
             errors.append(f"invalid plugin manifest JSON: {exc}")
 
+    marketplace_path = root / ".agents" / "plugins" / "marketplace.json"
+    if not marketplace_path.is_file():
+        errors.append("missing repository plugin marketplace")
+    else:
+        try:
+            marketplace = json.loads(marketplace_path.read_text(encoding="utf-8"))
+            if marketplace.get("name") != "everyone-is-skill":
+                errors.append("marketplace name must be everyone-is-skill")
+            entries = marketplace.get("plugins")
+            if not isinstance(entries, list):
+                errors.append("marketplace plugins must be an array")
+            else:
+                entry = next((item for item in entries if isinstance(item, dict) and item.get("name") == "everyone-is-skill"), None)
+                if entry is None:
+                    errors.append("marketplace must list everyone-is-skill")
+                elif entry.get("source", {}).get("path") != "./plugins/everyone-is-skill":
+                    errors.append("marketplace source path must be ./plugins/everyone-is-skill")
+        except json.JSONDecodeError as exc:
+            errors.append(f"invalid marketplace JSON: {exc}")
+
     skills_root = root / "plugins" / "everyone-is-skill" / "skills"
     actual_skills = {path.name for path in skills_root.iterdir() if path.is_dir()} if skills_root.is_dir() else set()
     for skill in sorted(REQUIRED_PLUGIN_SKILLS - actual_skills):

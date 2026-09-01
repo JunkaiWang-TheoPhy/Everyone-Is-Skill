@@ -6,44 +6,94 @@
       "kind": "team"
     },
     {
-      "id": "repo-manifest",
-      "label": "Everyone-Is-Skill repository manifest",
+      "id": "collective-yang-1954",
+      "label": "Conservation of Isotopic Spin and Isotopic Gauge Invariance",
       "kind": "source"
     },
     {
-      "id": "collective-method",
-      "label": "Modern theoretical physics methods profile",
+      "id": "collective-yau-1977",
+      "label": "Calabi's conjecture and some new results in algebraic geometry",
       "kind": "source"
     },
     {
-      "id": "profile-library",
-      "label": "Scientist profile library",
+      "id": "collective-siegel-1983",
+      "label": "Superspace, or One Thousand and One Lessons in Supersymmetry",
       "kind": "source"
     },
     {
-      "id": "collective-governance",
-      "label": "Collective profile governance note",
+      "id": "collective-seiberg-1994",
+      "label": "Electric-Magnetic Duality in Supersymmetric Non-Abelian Gauge Theories",
+      "kind": "source"
+    },
+    {
+      "id": "collective-maldacena-1997",
+      "label": "The Large N Limit of Superconformal Field Theories and Supergravity",
+      "kind": "source"
+    },
+    {
+      "id": "collective-nekrasov-2002",
+      "label": "Seiberg-Witten Prepotential From Instanton Counting",
+      "kind": "source"
+    },
+    {
+      "id": "collective-kitaev-2005",
+      "label": "Anyons in an exactly solved model and beyond",
+      "kind": "source"
+    },
+    {
+      "id": "collective-wen-2010",
+      "label": "Local unitary transformation, long-range quantum entanglement, wave function renormalization, and topological order",
+      "kind": "source"
+    },
+    {
+      "id": "collective-nima-2013",
+      "label": "The Amplituhedron",
       "kind": "source"
     }
   ],
   "edges": [
     {
-      "source": "repo-manifest",
+      "source": "collective-yang-1954",
       "target": "modern-theoretical-physics-methods",
       "relation": "evidence-reviewed-for"
     },
     {
-      "source": "collective-method",
+      "source": "collective-yau-1977",
       "target": "modern-theoretical-physics-methods",
       "relation": "evidence-reviewed-for"
     },
     {
-      "source": "profile-library",
+      "source": "collective-siegel-1983",
       "target": "modern-theoretical-physics-methods",
       "relation": "evidence-reviewed-for"
     },
     {
-      "source": "collective-governance",
+      "source": "collective-seiberg-1994",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-maldacena-1997",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-nekrasov-2002",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-kitaev-2005",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-wen-2010",
+      "target": "modern-theoretical-physics-methods",
+      "relation": "evidence-reviewed-for"
+    },
+    {
+      "source": "collective-nima-2013",
       "target": "modern-theoretical-physics-methods",
       "relation": "evidence-reviewed-for"
     }
