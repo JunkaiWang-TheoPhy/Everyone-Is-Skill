@@ -164,6 +164,19 @@ everyone-skill run-evals profiles/local/alexei-kitaev \
   --reviewer reviewer-id
 ```
 
+更新、比较、恢复和导出都不会抹除审查历史：
+
+```bash
+everyone-skill update-claim profiles/local/alexei-kitaev \
+  --source new-source.json --claim new-claim.json \
+  --reason "加入已审查的后续论文"
+everyone-skill diff-profile profiles/local/alexei-kitaev --snapshot SNAPSHOT_ID
+everyone-skill rollback-profile profiles/local/alexei-kitaev \
+  --snapshot SNAPSHOT_ID --reason "恢复已审查状态"
+everyone-skill export-profile profiles/local/alexei-kitaev \
+  --runtime codex --output dist/
+```
+
 在不复制或重新授权上游内容的情况下记录一个外部画像：
 
 ```bash

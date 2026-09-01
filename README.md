@@ -177,6 +177,19 @@ everyone-skill run-evals profiles/local/alexei-kitaev \
   --reviewer reviewer-id
 ```
 
+Update, inspect, recover, and export without erasing review history:
+
+```bash
+everyone-skill update-claim profiles/local/alexei-kitaev \
+  --source new-source.json --claim new-claim.json \
+  --reason "add a reviewed follow-up"
+everyone-skill diff-profile profiles/local/alexei-kitaev --snapshot SNAPSHOT_ID
+everyone-skill rollback-profile profiles/local/alexei-kitaev \
+  --snapshot SNAPSHOT_ID --reason "restore reviewed state"
+everyone-skill export-profile profiles/local/alexei-kitaev \
+  --runtime codex --output dist/
+```
+
 Reference an upstream profile without copying or relicensing its content:
 
 ```bash

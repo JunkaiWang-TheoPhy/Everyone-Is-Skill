@@ -18,6 +18,7 @@ REQUIRED_ROOT_FILES = {
     "SECURITY.md",
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",
+    "CHANGELOG.md",
     "README.md",
     "README.zh.md",
 }
@@ -28,6 +29,7 @@ REQUIRED_DOCS = {
     "profile-contract.md",
     "evaluation.md",
     "integrations.md",
+    "versioning.md",
 }
 
 REQUIRED_SCHEMAS = {
@@ -130,7 +132,7 @@ def validate_repository(root: Path) -> list[str]:
 
     shared_pairs = [
         (root / "docs" / filename, root / "plugins" / "everyone-is-skill" / "references" / filename)
-        for filename in ("architecture.md", "evidence-policy.md", "profile-contract.md", "evaluation.md")
+        for filename in ("architecture.md", "evidence-policy.md", "profile-contract.md", "evaluation.md", "versioning.md")
     ]
     shared_pairs.extend(
         (source, root / "plugins" / "everyone-is-skill" / "schemas" / source.name)
@@ -155,6 +157,12 @@ def validate_repository(root: Path) -> list[str]:
         for profile_dir in sorted(path for path in examples_root.iterdir() if path.is_dir()):
             errors.extend(
                 f"profile {profile_dir.name}: {error}" for error in validate_profile(profile_dir)
+            )
+    collectives_root = root / "profiles" / "collectives"
+    if collectives_root.is_dir():
+        for profile_dir in sorted(path for path in collectives_root.iterdir() if path.is_dir()):
+            errors.extend(
+                f"collective {profile_dir.name}: {error}" for error in validate_profile(profile_dir)
             )
     templates_root = root / "templates"
     if templates_root.is_dir():

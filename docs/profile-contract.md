@@ -123,6 +123,13 @@ Structural `validate` deliberately continues to accept inert drafts. Passing
 that command means the package can be inspected and migrated; it does not mean
 the profile is publishable.
 
+## History and export
+
+`history/` and `history.jsonl` are local maintenance artifacts rather than
+required runtime files. They are preserved in the working profile but excluded
+from cross-runtime exports. Updating reviewed evidence must invalidate the old
+review and evaluation state; see [versioning](versioning.md).
+
 ## Method-first contract
 
 `method.md` is the primary operational file. It should capture:

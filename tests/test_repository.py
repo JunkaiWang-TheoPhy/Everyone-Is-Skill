@@ -19,6 +19,7 @@ class RepositoryContractTests(unittest.TestCase):
             "SECURITY.md",
             "CONTRIBUTING.md",
             "CODE_OF_CONDUCT.md",
+            "CHANGELOG.md",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
 
@@ -34,7 +35,7 @@ class RepositoryContractTests(unittest.TestCase):
 
     def test_plugin_packages_shared_docs_and_schemas(self):
         plugin = ROOT / "plugins" / "everyone-is-skill"
-        for filename in ("architecture.md", "evidence-policy.md", "profile-contract.md", "evaluation.md"):
+        for filename in ("architecture.md", "evidence-policy.md", "profile-contract.md", "evaluation.md", "versioning.md"):
             self.assertEqual(
                 (ROOT / "docs" / filename).read_bytes(),
                 (plugin / "references" / filename).read_bytes(),
@@ -54,6 +55,21 @@ class RepositoryContractTests(unittest.TestCase):
             skill.write_text("not valid skill frontmatter\n", encoding="utf-8")
             errors = validate_repository(checkout)
             self.assertTrue(any("invalid skill" in error for error in errors), errors)
+
+    def test_repository_validator_rejects_stale_versioning_reference(self):
+        import shutil
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            checkout = Path(tmp) / "repo"
+            shutil.copytree(ROOT, checkout, ignore=shutil.ignore_patterns(".git", "__pycache__", "*.egg-info"))
+            packaged = checkout / "plugins" / "everyone-is-skill" / "references" / "versioning.md"
+            packaged.write_text("stale\n", encoding="utf-8")
+            errors = validate_repository(checkout)
+            self.assertIn(
+                "plugin shared file is stale: plugins/everyone-is-skill/references/versioning.md",
+                errors,
+            )
 
 
 if __name__ == "__main__":

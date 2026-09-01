@@ -29,6 +29,10 @@ use the version declared in `pyproject.toml` and the Codex plugin manifest.
   collective that preserves historical phases, roles, and dissent.
 - Independent repository peer review and two-run, seven-suite behavior records
   for the Kitaev, Yau, and Maldacena profiles.
+- Immutable profile snapshots, append-only source/claim updates, machine-readable
+  diffs, evaluation invalidation, and safety-snapshotted rollback.
+- Contract-preserving exports for Codex, Claude Code, OpenClaw, and AGENTS.md
+  runtimes.
 
 ## 0.1.0 - 2026-09-01
 

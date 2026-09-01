@@ -147,6 +147,10 @@ publication contract described in the profile and evaluation documents.
   data.
 - `src/everyone_is_skill/distillation.py` owns the provider-neutral draft
   pipeline.
+- `src/everyone_is_skill/versioning.py` owns immutable snapshots, append-only
+  claim updates, diffs, evaluation invalidation, and recoverable rollback.
+- `src/everyone_is_skill/exporting.py` creates additive runtime packages without
+  rewriting the profile contract.
 
 ## Non-goals
 

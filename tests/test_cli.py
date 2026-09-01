@@ -308,6 +308,37 @@ class CliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(json.loads(output.read_text(encoding="utf-8"))["instruction_quarantine"])
 
+    def test_export_profile_command_preserves_contract(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            created = self.run_cli(
+                "new-profile",
+                "--output",
+                tmp,
+                "--slug",
+                "example-scientist",
+                "--name",
+                "Example Scientist",
+                "--kind",
+                "scientist",
+            )
+            self.assertEqual(created.returncode, 0, created.stderr)
+            profile = Path(tmp) / "example-scientist"
+            manifest_path = profile / "manifest.json"
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest["identity_anchors"] = [{"type": "homepage", "value": "https://example.test"}]
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            result = self.run_cli(
+                "export-profile",
+                str(profile),
+                "--runtime",
+                "codex",
+                "--output",
+                str(Path(tmp) / "export"),
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            exported = Path(result.stdout.strip())
+            self.assertEqual(self.run_cli("validate", str(exported)).returncode, 0)
+
     def test_import_reference_records_upstream_without_copying_it(self):
         with tempfile.TemporaryDirectory() as tmp:
             result = self.run_cli(

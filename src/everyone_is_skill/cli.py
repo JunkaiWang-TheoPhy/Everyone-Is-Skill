@@ -92,6 +92,32 @@ def build_parser() -> argparse.ArgumentParser:
     )
     import_upstream.add_argument("--output", required=True, type=Path)
 
+    snapshot_profile = subparsers.add_parser("snapshot-profile", help="create an immutable profile snapshot")
+    snapshot_profile.add_argument("profile", type=Path)
+    snapshot_profile.add_argument("--reason", required=True)
+
+    diff_profile = subparsers.add_parser("diff-profile", help="compare a profile with one history snapshot")
+    diff_profile.add_argument("profile", type=Path)
+    diff_profile.add_argument("--snapshot", required=True)
+
+    update_claim = subparsers.add_parser(
+        "update-claim", help="append one source-backed claim after snapshotting the profile"
+    )
+    update_claim.add_argument("profile", type=Path)
+    update_claim.add_argument("--source", required=True, type=Path)
+    update_claim.add_argument("--claim", required=True, type=Path)
+    update_claim.add_argument("--reason", required=True)
+
+    rollback_profile = subparsers.add_parser("rollback-profile", help="restore a snapshot after a safety snapshot")
+    rollback_profile.add_argument("profile", type=Path)
+    rollback_profile.add_argument("--snapshot", required=True)
+    rollback_profile.add_argument("--reason", required=True)
+
+    export_profile = subparsers.add_parser("export-profile", help="export a portable profile for a supported runtime")
+    export_profile.add_argument("profile", type=Path)
+    export_profile.add_argument("--runtime", required=True, choices=("codex", "claude-code", "openclaw", "agents-md"))
+    export_profile.add_argument("--output", required=True, type=Path)
+
     validate_repo = subparsers.add_parser("validate-repo", help="validate a source repository checkout")
     validate_repo.add_argument("root", type=Path, nargs="?", default=Path("."))
 
@@ -191,6 +217,45 @@ def main(argv: list[str] | None = None) -> int:
         )
         output = write_upstream_jsonl(args.output, records)
         print(output)
+        return 0
+    if args.command == "snapshot-profile":
+        from .versioning import snapshot_profile
+
+        print(json.dumps(snapshot_profile(args.profile, reason=args.reason), ensure_ascii=False, sort_keys=True))
+        return 0
+    if args.command == "diff-profile":
+        from .versioning import diff_profile
+
+        print(json.dumps(diff_profile(args.profile, args.snapshot), ensure_ascii=False, sort_keys=True))
+        return 0
+    if args.command == "update-claim":
+        from .versioning import update_profile_claim
+
+        source = json.loads(args.source.read_text(encoding="utf-8"))
+        claim = json.loads(args.claim.read_text(encoding="utf-8"))
+        print(
+            json.dumps(
+                update_profile_claim(args.profile, source=source, claim=claim, reason=args.reason),
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+        )
+        return 0
+    if args.command == "rollback-profile":
+        from .versioning import rollback_profile
+
+        print(
+            json.dumps(
+                rollback_profile(args.profile, args.snapshot, reason=args.reason),
+                ensure_ascii=False,
+                sort_keys=True,
+            )
+        )
+        return 0
+    if args.command == "export-profile":
+        from .exporting import export_profile
+
+        print(export_profile(args.profile, args.output, runtime=args.runtime))
         return 0
     if args.command == "validate-repo":
         from .repository import validate_repository
